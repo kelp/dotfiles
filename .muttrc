@@ -1,0 +1,50 @@
+# vim: filetype=muttrc
+#
+# Userconfig and other secrets 
+source $HOME/.muttrc-secrets
+
+set folder = imaps://imap.gmail.com/
+set spoolfile = +INBOX
+set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Drafts"
+
+set record=""
+
+auto_view text/html    # view html automatically
+alternative_order text/plain text/enriched text/html 
+set mailcap_path = ~/.mailcap
+
+bind editor <space> noop
+macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
+macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+
+color normal	    white black
+color attachment    brightyellow black
+color hdrdefault    cyan black
+color indicator     black cyan
+color markers	    brightred black
+color quoted	    green black
+color signature     cyan black
+color status	    brightgreen blue
+color tilde	        blue black
+color tree	        red black
+
+color index	        red black ~D
+color index	        magenta black ~T
+
+#color header	brightgreen black ^From:
+#color header	brightcyan black ^To:
+#color header	brightcyan black ^Reply-To:
+#color header	brightcyan black ^Cc:
+#color header	brightblue black ^Subject:
+
+color body	brightred black [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+# identifies email addresses
+
+color body	brightblue black (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+# identifies URLs
+#
