@@ -18,6 +18,5 @@ To bootstrap on a new system:
 
     echo ".dotfiles" >> .gitignore
     git clone --separate-git-dir=$HOME/.dotfiles https://github.com/kelp/dotfiles $HOME/dotfiles-tmp
-    cp ~/dotfiles-tmp/.gitmodules ~  # If you use Git submodules
     rm -r ~/dotfiles-tmp/
     alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
