@@ -119,4 +119,4 @@ end
 alias python="python3"
 alias pip="pip3"
 alias pydoc="pydoc3"
-alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
