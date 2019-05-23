@@ -19,3 +19,10 @@ to exist on a computer, delete them in that computer's branch.
 
 To bootstrap on a new system:
     curl https://raw.githubusercontent.com/kelp/dotfiles/master/dotfiles.sh | bash
+
+#Useful commands:
+
+## merge changes on master into the branch:
+    dot checkout <branch> 
+    dot merge origin/master
+
