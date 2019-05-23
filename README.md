@@ -22,7 +22,10 @@ To bootstrap on a new system:
 
 #Useful commands:
 
-## merge changes on master into the branch:
+## Revert file to state in master
+dot checkout origin/master <file>
+
+## rebase changes on master into the branch:
     dot checkout <branch> 
-    dot merge origin/master
+    dot rebase origin/master
 
