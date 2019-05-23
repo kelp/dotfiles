@@ -20,6 +20,9 @@ to exist on a computer, delete them in that computer's branch.
 To bootstrap on a new system:
     curl https://raw.githubusercontent.com/kelp/dotfiles/master/dotfiles.sh | bash
 
+Generally we rebase branches, so need to be careful about which changes
+happen in those branches. 
+
 #Useful commands:
 
 ## Revert file to state in master
@@ -27,5 +30,5 @@ dot checkout origin/master <file>
 
 ## rebase changes on master into the branch:
     dot checkout <branch> 
-    dot rebase origin/master
+    git pull --rebase origin master
 
