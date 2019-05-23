@@ -1,0 +1,11 @@
+[user]
+	name = Travis Cole
+	email = 11240+kelp@users.noreply.github.com
+	signingkey = 67E4246BD03CB8A7
+[color]
+	ui = true
+[commit]
+	verbose = true
+	gpgsign = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
