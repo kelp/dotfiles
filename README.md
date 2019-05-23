@@ -15,8 +15,4 @@ for any global change, do it in master and then 'git merge master'
 For local configs, do it on the computer specific branch.
 
 To bootstrap on a new system:
-
-    echo ".dotfiles" >> .gitignore
-    git clone --separate-git-dir=$HOME/.dotfiles https://github.com/kelp/dotfiles $HOME/dotfiles-tmp
-    rm -r ~/dotfiles-tmp/
-    alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+    curl https://raw.githubusercontent.com/kelp/dotfiles/master/dotfiles.sh | bash
