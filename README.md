@@ -14,5 +14,8 @@ for any global change, do it in master and then 'git merge master'
 
 For local configs, do it on the computer specific branch.
 
+Put all configs in master, but if they shouldn't or don't need
+to exist on a computer, delete them in that computer's branch.
+
 To bootstrap on a new system:
     curl https://raw.githubusercontent.com/kelp/dotfiles/master/dotfiles.sh | bash
