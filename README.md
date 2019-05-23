@@ -18,7 +18,8 @@ Put all configs in master, but if they shouldn't or don't need
 to exist on a computer, delete them in that computer's branch.
 
 To bootstrap on a new system:
-    curl https://raw.githubusercontent.com/kelp/dotfiles/master/dotfiles.sh | bash
+
+    curl -Lks https://git.io/fjB0R | bash
 
 Generally we rebase branches, so need to be careful about which changes
 happen in those branches. 
