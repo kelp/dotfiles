@@ -120,3 +120,4 @@ alias python="python3"
 alias pip="pip3"
 alias pydoc="pydoc3"
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
