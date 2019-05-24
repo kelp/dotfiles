@@ -1,8 +1,10 @@
 # dotfiles
 
 These are my dotfiles managed via the methodology descxribed in this HN thread: 
+
 https://news.ycombinator.com/item?id=11070797
 and here:
+
 https://www.atlassian.com/git/tutorials/dotfiles
 
 # Workflow
