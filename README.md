@@ -33,3 +33,6 @@ dot checkout origin/master <file>
     dot checkout <branch> 
     git pull --rebase origin master
 
+## List all files currently tracked
+    dot ls-tree --full-tree -r --name-only HEAD
+
