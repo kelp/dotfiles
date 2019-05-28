@@ -28,12 +28,18 @@ happen in those branches.
 
 #Useful commands:
 
+# Create a new breanch for the local config
+dot checkout -b arch-server
+
+# Push the new branch upstream
+dot push origin/arch-server
+
 ## Revert file to state in master
 dot checkout origin/master <file>
 
 ## rebase changes on master into the branch:
     dot checkout <branch> 
-    git pull --rebase origin master
+    dot pull --rebase origin master
 
 ## List all files currently tracked
     dot ls-tree --full-tree -r --name-only HEAD
