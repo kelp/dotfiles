@@ -16,12 +16,13 @@ alternative_order text/plain text/enriched text/html
 set mailcap_path = ~/.mailcap
 
 bind editor <space> noop
-macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
-macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
-macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
-macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
-macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+macro index,pager y "<save-message>$spoolfile/Archive<enter><enter>" "Archive"
+macro index,pager d "<save-message>$spoolfile/Trash<enter><enter>" "Trash"
+macro index gi "<change-folder>$spoolfile/INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>$spoolfile/Archive<enter>" "Go to all mail"
+# Not sure yet what if any the Fastmail equivilent is
+#macro index gs "<change-folder>=Starred<enter>" "Go to starred messages"
+macro index gd "<change-folder>$spoolfile/Drafts<enter>" "Go to drafts"
 
 color normal	    white black
 color attachment    brightyellow black
