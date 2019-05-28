@@ -3,10 +3,11 @@
 # Userconfig and other secrets 
 source $HOME/.muttrc-secrets
 
-set folder = imaps://imap.gmail.com/
-set spoolfile = +INBOX
-set record = "+[Gmail]/Sent Mail"
-set postponed = "+[Gmail]/Drafts"
+set folder = imaps://imap.fastmail.com/INBOX
+#set spoolfile = +INBOX
+set spoolfile = imaps://imap.fastmail.com
+set record = "+Sent Items"
+set postponed = "+Drafts"
 
 set record=""
 
