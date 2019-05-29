@@ -26,16 +26,16 @@ To bootstrap on a new system:
 Generally we rebase branches, so need to be careful about which changes
 happen in those branches. 
 
-#Useful commands:
+# Useful commands:
 
-# Create a new breanch for the local config
-dot checkout -b arch-server
+## Create a new breanch for the local config
+    dot checkout -b arch-server
 
-# Push the new branch upstream
-dot push origin/arch-server
+## Push the new branch upstream
+    dot push origin/arch-server
 
 ## Revert file to state in master
-dot checkout origin/master <file>
+    dot checkout origin/master <file>
 
 ## rebase changes on master into the branch:
     dot checkout <branch> 
