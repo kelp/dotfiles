@@ -1,5 +1,6 @@
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GDK_SCALE=1
+#export GTK_THEME=Adwaita:dark
 export TERMINAL=alacritty
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 xrandr --setprovideroutputsource modesetting NVIDIA-0
