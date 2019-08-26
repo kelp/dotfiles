@@ -84,9 +84,8 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
-            alias pip='pip3.6'
-            alias tar='gtar'
-            alias ls='gls --color'
+            #alias tar='gtar'
+            alias ls='colorls -G'
             set -x TERM xterm-color
         case Darwin
             gpgagent $OS
