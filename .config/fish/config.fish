@@ -87,6 +87,7 @@ if status --is-interactive
             #alias tar='gtar'
             alias ls='colorls -G'
             set -x TERM xterm-color
+            set -x CVSROOT anoncvs@anoncvs1.usa.openbsd.org:/cvs
         case Darwin
             gpgagent $OS
         case '*'
