@@ -6,7 +6,7 @@
 set TMP (mktemp)
 set MOTD $HOME/.config/motd/motd
 
-neofetch --ascii_distro arch_small >> $TMP
+neofetch >> $TMP
 
 echo "Updates: " >> $TMP
 checkupdates >> $TMP
