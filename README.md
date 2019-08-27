@@ -50,3 +50,6 @@ dot push origin/arch-server
 ## List all files currently tracked
     dot ls-tree --full-tree -r --name-only HEAD
 
+## Cherry pick a commit to add to master, you can provide more than one sha
+    dot checkout master
+    dot cherry-pick <commit sha>
