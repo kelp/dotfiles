@@ -84,10 +84,13 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
-            alias pip='pip3.6'
-            alias tar='gtar'
-            alias ls='gls --color'
-            set -x TERM xterm-color
+            alias pip='pip3.7'
+            #alias tar='gtar'
+            alias ls='colorls -G'
+            #set -x TERM xterm-color
+            eval (ssh-agent -c)
+            set -x XCURSOR_PATH "~/.icons /usr/X11R6/lib/X11/icons"
+            set -x XCURSOR_THEME whiteglass
         case Darwin
             gpgagent $OS
         case '*'
