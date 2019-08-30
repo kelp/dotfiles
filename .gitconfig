@@ -6,6 +6,6 @@
 	ui = true
 [commit]
 	verbose = true
-	gpgsign = false
+	gpgsign = true
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
