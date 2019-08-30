@@ -84,9 +84,7 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
-            #alias tar='gtar'
             alias ls='colorls -G'
-            set -x TERM xterm-color
             set -x CVSROOT anoncvs@anoncvs1.usa.openbsd.org:/cvs
         case Darwin
             gpgagent $OS
