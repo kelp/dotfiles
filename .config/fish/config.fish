@@ -94,6 +94,7 @@ if status --is-interactive
             set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
             gpgagent $OS
             #eval (ssh-agent -c)
+            set -x CVSROOT anoncvs@anoncvs1.usa.openbsd.org:/cvs
         case Darwin
             gpgagent $OS
         case '*'
