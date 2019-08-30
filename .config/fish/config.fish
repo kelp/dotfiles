@@ -93,7 +93,11 @@ if status --is-interactive
             alias gpg='gpg2'
             set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
             gpgagent $OS
-            #eval (ssh-agent -c)
+            alias pip='pip3.7'
+            alias ls='colorls -G'
+            eval (ssh-agent -c)
+            set -x XCURSOR_PATH "~/.icons /usr/X11R6/lib/X11/icons"
+            set -x XCURSOR_THEME whiteglass
         case Darwin
             gpgagent $OS
         case '*'
