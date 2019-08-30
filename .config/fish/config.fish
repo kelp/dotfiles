@@ -96,6 +96,7 @@ if status --is-interactive
             eval (ssh-agent -c)
             set -x XCURSOR_PATH "~/.icons /usr/X11R6/lib/X11/icons"
             set -x XCURSOR_THEME whiteglass
+        case Darwin
             gpgagent $OS
         case '*'
             echo "I don't know what OS this is"
