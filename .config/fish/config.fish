@@ -89,8 +89,6 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
-            alias ls='colorls -G'
-            alias gpg='gpg2'
             set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
             gpgagent $OS
             alias pip='pip3.7'
@@ -98,7 +96,6 @@ if status --is-interactive
             eval (ssh-agent -c)
             set -x XCURSOR_PATH "~/.icons /usr/X11R6/lib/X11/icons"
             set -x XCURSOR_THEME whiteglass
-        case Darwin
             gpgagent $OS
         case '*'
             echo "I don't know what OS this is"
