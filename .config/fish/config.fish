@@ -90,6 +90,7 @@ if status --is-interactive
             set -x TERM xterm-color
         case Darwin
             gpgagent $OS
+            test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
         case '*'
             echo "I don't know what OS this is"
     end
