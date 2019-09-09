@@ -90,6 +90,7 @@ if status --is-interactive
             set -x SYSTEMD_PAGER ''
         case OpenBSD
             alias ls='colorls -G'
+            alias gpg='gpg2'
             set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
             gpgagent $OS
             #eval (ssh-agent -c)
