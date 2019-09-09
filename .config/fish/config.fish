@@ -85,7 +85,9 @@ if status --is-interactive
             set -x SYSTEMD_PAGER ''
         case OpenBSD
             alias ls='colorls -G'
-            set -x CVSROOT anoncvs@anoncvs1.usa.openbsd.org:/cvs
+            set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
+            gpgagent $OS
+            #eval (ssh-agent -c)
         case Darwin
             gpgagent $OS
         case '*'
