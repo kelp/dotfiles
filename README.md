@@ -35,7 +35,7 @@ happen in those branches.
     dot push origin/arch-server
 
 ## Revert file to state in master
-    dot checkout origin/master <file>
+    dot checkout master <file>
 
 ## rebase changes on master into the branch:
     dot checkout <branch> 
