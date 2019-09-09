@@ -67,6 +67,11 @@ if status --is-interactive
         end
     end
 
+    # If we're inside tmux
+    if set -q TMUX
+        set -x SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
+    end
+
     # OS specific Configs 
     set -x OS (uname -s)
 
