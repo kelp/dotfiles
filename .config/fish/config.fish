@@ -67,6 +67,11 @@ if status --is-interactive
         end
     end
 
+    # If we're inside tmux
+    if set -q TMUX
+        set -x SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
+    end
+
     # OS specific Configs 
     set -x OS (uname -s)
 
@@ -84,13 +89,13 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
-            alias pip='pip3.6'
-            alias tar='gtar'
-            alias ls='gls --color'
-            set -x TERM xterm-color
+            alias ls='colorls -G'
+            alias gpg='gpg2'
+            set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
+            gpgagent $OS
+            #eval (ssh-agent -c)
         case Darwin
             gpgagent $OS
-            test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
         case '*'
             echo "I don't know what OS this is"
     end
