@@ -3,10 +3,12 @@
 # Userconfig and other secrets 
 source $HOME/.muttrc-secrets
 
+set from = "Travis Cole <kelp@plek.org>"
+
 set folder = imaps://imap.fastmail.com/INBOX
 #set spoolfile = +INBOX
 set spoolfile = imaps://imap.fastmail.com
-set record = "+Sent Items"
+set record = "+Sent"
 set postponed = "+Drafts"
 
 set record=""
