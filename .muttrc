@@ -11,6 +11,8 @@ set spoolfile = imaps://$my_server
 set record = "=Sent"
 set postponed = "=Drafts"
 
+set imap_check_subscribed = yes
+
 set header_cache = $HOME/.local/mutt/fastmail
 set message_cachedir = $HOME/.local/mutt/fastmail
 
