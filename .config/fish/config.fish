@@ -22,6 +22,7 @@ if status --is-interactive
 
     # Aliases
     alias vi="nvim"
+    alias vim="nvim"
     alias view="nvim -R"
 
     # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
@@ -114,11 +115,12 @@ end
 
 # Global configs for interactive and non-interactive shells
 set -x GOPATH "$HOME/src"
+set -x GOBIN "$GOPATH/bin"
 
 if [ -d $HOME/.node_modules/bin ]
-    set -x PATH $HOME/bin $HOME/.node_modules/bin /usr/local/sbin $PATH
+    set -x PATH $HOME/bin $GOBIN $HOME/.node_modules/bin /usr/local/sbin $PATH
 else
-    set -x PATH $HOME/bin $GOPATH/bin /usr/local/sbin $PATH
+    set -x PATH $HOME/bin $GOBIN /usr/local/sbin $PATH
 end
 
 # Global aliases
