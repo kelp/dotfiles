@@ -270,9 +270,10 @@ command! PU PlugUpdate | PlugUpgrade
 " Required:
 call plug#begin()
 
-Plug 'Shougo/deoplete.nvim'                         " Code completion plugin
-  Plug 'zchee/deoplete-jedi', { 'for': 'python' }   " Jedi support for deoplete
-  Plug 'zchee/deoplete-go', { 'for': 'go' }         " Support for go
+" Disabling deoplete while testing out CoC.
+"Plug 'Shougo/deoplete.nvim'                         " Code completion plugin
+"  Plug 'zchee/deoplete-jedi', { 'for': 'python' }   " Jedi support for deoplete
+  "  Plug 'zchee/deoplete-go', { 'for': 'go' }         " Support for go
   "Plug 'mdempsky/gocode', { 'for': 'go' }          " Required by deoplete-go
 
 " This genrates shell prompt configs simialr to airline
@@ -285,7 +286,7 @@ Plug 'vim-airline/vim-airline'              " Powerline like bar
   Plug 'ryanoasis/vim-devicons'             " utf-8 icons for vim-airline
   Plug 'mhinz/vim-signify'                  " Show vcs changes per line
 
-Plug 'fatih/vim-go', { 'for': 'go' } " Go support
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Go support
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of Completion
 Plug 'mhinz/vim-startify'       " Creates a nice default start screen
 Plug 'joshdick/onedark.vim'     " The onedark color theme
@@ -396,7 +397,8 @@ let g:go_def_mapping_enabled = 0
 " end huge coc settings block
 
 " Enable deoplete code completion at startup
-let g:deoplete#enable_at_startup = 1
+" Disabled while testing CoC
+let g:deoplete#enable_at_startup = 0
 
 let g:ale_enabled = 1 " enablee/disable ale
 " Enable/Disable Ale completion - disabled currently
