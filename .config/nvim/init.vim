@@ -68,10 +68,10 @@ if has('nvim')
 endif
 
 " vim-startify configs
-let g:startify_bookmarks = [ { 'c':
-  \ '$HOME/.homesick/repos/nvim/home/.config/nvim/init.vim'},
-  \ { 'ze': '$HOME/.homesick/repos/dotfiles/home/.zshenv'},
-  \ { 'zr': '$HOME/.homesick/repos/dotfiles/home/.zshrc'}]
+let g:startify_bookmarks = [ 
+  \ { 'c':  '$HOME/.config/nvim/init.vim'},
+  \ { 'fc': '$HOME/.config/fish/config.fish'},
+  \ ]
 
 let g:startify_commands = [
   \ {'h': 'help reference'},
@@ -275,6 +275,7 @@ call plug#begin()
 "  Plug 'zchee/deoplete-jedi', { 'for': 'python' }   " Jedi support for deoplete
   "  Plug 'zchee/deoplete-go', { 'for': 'go' }         " Support for go
   "Plug 'mdempsky/gocode', { 'for': 'go' }          " Required by deoplete-go
+  "
 
 " This genrates shell prompt configs simialr to airline
 " Usage: :PromptlineSnapshot ~/promptline.sh
