@@ -51,5 +51,5 @@ xterm*savelines: 16384
 xterm*ScrollBar: false
 xterm*background: black
 xterm*foreground: lightgray
-xterm*faceSize: 6
+xterm*faceSize: 7
 xterm*faceName: DejaVu Sans Mono
