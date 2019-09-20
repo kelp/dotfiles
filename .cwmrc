@@ -19,7 +19,7 @@ unbind-key all
 
 # Default to xterm untli I can figure out how to make
 # powerline fonts work with st
-#command term "st -f 'DejaVu Sans Mono:size=7'"
+command term "st -f 'DejaVu Sans Mono:size=7'"
 # mod + enter = new xterm
 bind-key 4-Return terminal
 # ctrl + alt + L = lock screen (xlock)
