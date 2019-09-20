@@ -24,13 +24,20 @@ if status --is-interactive
     alias vi="nvim"
     alias view="nvim -R"
 
-    # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
-    set -g theme_powerline_fonts yes
-    set -g theme_nerd_fonts yes
+    if [ $TERM = "vt220" ]
+        # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
+        set -g theme_powerline_fonts no
+        set -g theme_nerd_fonts no
+    	set -g theme_color_scheme terminal-dark-white
+    else
+        # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
+        set -g theme_powerline_fonts yes
+        set -g theme_nerd_fonts yes
+    	set -g theme_color_scheme dark
+    end
     set -g theme_display_user ssh
     set -g theme_display_hostname ssh
     set -g theme_show_exit_status yes
-    set -g theme_color_scheme dark
     set -g fish_prompt_pwd_dir_length 4
     set -g theme_project_dir_length 1
     set -g theme_newline_cursor no
@@ -94,8 +101,11 @@ if status --is-interactive
             alias pip='pip3.7'
             alias ls='colorls -G'
             eval (ssh-agent -c)
+            set -x LANG en_US.UTF-8
+            set -x LC_CTYPE en_US.UTF-8
             set -x XCURSOR_PATH "~/.icons /usr/X11R6/lib/X11/icons"
             set -x XCURSOR_THEME whiteglass
+            set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
         case Darwin
             gpgagent $OS
         case '*'
