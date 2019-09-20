@@ -39,6 +39,14 @@ function! AirlineInit()
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
+" Enable fugitive branch integration
+let g:airline#extensions#branch#enabled = 1
+" Enable bufferline integration
+let g:airline#extensions#bufferline#enabled = 1
+" Enable coc extension
+let g:airline#extensions#coc#enabled = 1
+" Enable syntastic integration
+let g:airline#extensions#syntastic#enabled = 1
 
 set laststatus=2
 
