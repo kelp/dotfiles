@@ -13,7 +13,7 @@ xidle &
 
 # sadly, xclock has a bug where the font selection is ignored when UTF-8
 # is enabled, so we unset LANG here.
-LANG= xclock -strftime "%a %e %b %Y %H:%M" &
+#LANG= xclock -strftime "%a %e %b %Y %H:%M" &
 
 # disable system beep
 xset b off
@@ -27,6 +27,9 @@ xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 7 6 5 4
 # Take 5 pixels of movement before we start scrolling. Defualt is 10
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Inertia" 5
 
+xset +fp /usr/local/share/fonts/NerdFonts
+xset fp rehash &
+
 # use caps lock as ctrl key
 setxkbmap -option ctrl:nocaps
 
@@ -36,5 +39,12 @@ if [ -x ${PREFIX}/bin/dbus-launch -a -z "${DBUS_SESSION_BUS_ADDRESS}" ]; then
         eval `dbus-launch --sh-syntax --exit-with-x11`
 fi
 
+# hided the mouse cursor after you type
+xbanish &
+
+# run slstatus bar
+slstatus &
+
 # start cwm!
-exec cwm
+#exec cwm
+exec dwm
