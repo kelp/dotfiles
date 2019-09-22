@@ -50,6 +50,9 @@ if status --is-interactive
     set TZONE (date +%Z)
     set -g theme_date_format "+%H:%M:%S:$TZONE"
 
+    # disable shell git in these large repos. It's way too slow
+    set -g theme_vcs_ignore_paths $HOME/src/openbsd $HOME/src/linux
+
     # disable the theme greeting
     function fish_greeting
         set_color normal
