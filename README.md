@@ -47,3 +47,6 @@ happen in those branches.
 ## Cherry pick a commit to add to master, you can provide more than one sha
     dot checkout master
     dot cherry-pick <commit sha>
+
+## Merge whole files back into the feature branch.
+    dot checkout master <file name>
