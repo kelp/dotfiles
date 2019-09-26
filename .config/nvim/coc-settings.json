@@ -1,0 +1,28 @@
+{
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["go"]
+        }
+    },
+    "languageserver": {
+        "terraform": {
+          "command": "terraform-lsp",
+          "filetypes": ["terraform"],
+          "initializationOptions": {}
+        },
+    },
+    "languageserver": {
+        "bash": {
+            "command": "bash-language-server",
+            "args": ["start"],
+            "filetypes": ["sh"],
+            "ignoredRootPaths": ["~"]
+        }
+    },
+    "python.jediEnabled": false,
+    "python.setLinter": "flake8",
+    "python.setInterpreter": "python3"
+
+}
