@@ -25,7 +25,7 @@ set showcmd     " show the last command entered
 set cursorline  " put a line where the cursor is
 "set list        " show invisible characters
 set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,space:␣
-set showbreak=↪\ 
+set showbreak=↪\
 " TODO figure out how to change the color of extra characters
 " like trail:
 
@@ -33,27 +33,27 @@ set showbreak=↪\
 let g:airline_powerline_fonts = 1
 let g:airline_theme='onedark'
 let g:airline#extensions#tabline#enabled = 1 " Enable tab line at top
-let g:airline#extensions#clock#auto = 0
-function! AirlineInit()
-  let g:airline_section_z = airline#section#create(['clock', g:airline_symbols.space, g:airline_section_z])
-endfunction
-autocmd User AirlineAfterInit call AirlineInit()
+"let g:airline#extensions#clock#auto = 0
+" function! AirlineInit()
+"  let g:airline_section_z = airline#section#create(['clock', g:airline_symbols.space, g:airline_section_z])
+"endfunction
+"autocmd User AirlineAfterInit call AirlineInit()
 let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
 
 set laststatus=2
 
 let g:indentLine_char = '⎸'
 
-" Disable setting a background color without this we get kind of a grey 
+" Disable setting a background color without this we get kind of a grey
 " washed out look
 if (has("autocmd") && !has("gui_running"))
   augroup colorset
     autocmd!
     let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) 
+    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white })
     " `bg` will not be styled since there is no `bg` setting
   augroup END
-endif 
+endif
 
 " Enable 24 bit colors if we can
 if (has("termguicolors"))
@@ -68,7 +68,7 @@ if has('nvim')
 endif
 
 " vim-startify configs
-let g:startify_bookmarks = [ 
+let g:startify_bookmarks = [
   \ { 'c':  '$HOME/.config/nvim/init.vim'},
   \ { 'fc': '$HOME/.config/fish/config.fish'},
   \ ]
@@ -152,7 +152,7 @@ let g:ale_linters = {}
 let g:ale_fixers = {}
 
 " Fish Shell
-autocmd FileType fish compiler fish 
+autocmd FileType fish compiler fish
 autocmd FileType fish setlocal textwidth=79 foldmethod=expr
 
 " Go
@@ -178,7 +178,7 @@ let g:airline#extensions#virtualenv#enabled = 1
 " show doc strings in python
 let g:deoplete#sources#jedi#show_docstring = 1
 
-" JavaScript 
+" JavaScript
 " use `eslint` for JavaScript and Vue
 let g:ale_linters.javascript = ['prettier']
 let g:ale_fixers.javascript = ['prettier', 'eslint']
@@ -250,8 +250,8 @@ if !filereadable(vimplug_exists)
   endif
   echo "Installing Vim-Plug..."
   echo ""
-  silent !\curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs 
-  \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !\curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+  \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   let g:not_finish_vimplug = "yes"
 
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -283,7 +283,7 @@ Plug 'edkolev/promptline.vim', { 'on': 'PromptlineSnapshot'}
 " Put a nice colored powerline like bar at the bottom
 Plug 'vim-airline/vim-airline'              " Powerline like bar
   Plug 'vim-airline/vim-airline-themes'     " Themes
-  Plug 'enricobacis/vim-airline-clock'      " A clock for airline
+  "Plug 'enricobacis/vim-airline-clock'      " A clock for airline
   Plug 'ryanoasis/vim-devicons'             " utf-8 icons for vim-airline
   Plug 'mhinz/vim-signify'                  " Show vcs changes per line
 
@@ -319,7 +319,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on':  'NERDTreeToggle' }
   Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }
 
-" Finish 
+" Finish
 " Required:
 call plug#end()
 
@@ -438,7 +438,7 @@ syntax on       " enable syntax highlighting
 " Text Formatting {{{
 "
 set encoding=utf-8
-" Add some key mappings to manage code omments 
+" Add some key mappings to manage code omments
 let g:NERDSpaceDelims = 1
 
 
@@ -463,7 +463,7 @@ set modelines=1             " Read a modeline on the last line of the file
 " configure colorscheme onedark
 " Color scheme has to be loaded after plugin initilization
 if !exists('g:not_finish_vimplug')
-	colorscheme onedark
+    colorscheme onedark
 endif
 
 " }}}
