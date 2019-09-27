@@ -34,6 +34,12 @@ happen in those branches.
 ## Push the new branch upstream
     dot push origin/arch-server
 
+# Create a new breanch for the local config
+dot checkout -b arch-server
+
+# Push the new branch upstream
+dot push origin/arch-server
+
 ## Revert file to state in master
     dot checkout master <file>
 
