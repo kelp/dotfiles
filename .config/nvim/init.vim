@@ -329,9 +329,6 @@ call plug#end()
 
 " coc.nvim default settings
 
-" Enable coc airline integration
-let g:airline#extensions#coc#enabled = 1
-
 " if hidden is not set, TextEdit might fail.
 set hidden
 " Better display for messages
