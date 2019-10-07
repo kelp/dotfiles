@@ -99,16 +99,14 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
-            set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
             gpgagent $OS
             alias pip='pip3.7'
             alias ls='colorls -G'
-            eval (ssh-agent -c)
+            #eval (ssh-agent -c)
             set -x LANG en_US.UTF-8
             set -x LC_CTYPE en_US.UTF-8
-            set -x XCURSOR_PATH "~/.icons /usr/X11R6/lib/X11/icons"
-            set -x XCURSOR_THEME whiteglass
             set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
+            set -x PATH /usr/ports/infrastructure/bin $PATH
         case Darwin
             gpgagent $OS
         case '*'
@@ -130,10 +128,10 @@ end
 # Global configs for interactive and non-interactive shells
 set -x GOPATH "$HOME/src"
 
+set -x PATH $HOME/bin $HOME/.cargo/bin $GOPATH/bin /usr/local/sbin $PATH
+
 if [ -d $HOME/.node_modules/bin ]
-    set -x PATH $HOME/bin $HOME/.node_modules/bin /usr/local/sbin $PATH
-else
-    set -x PATH $HOME/bin $GOPATH/bin /usr/local/sbin $PATH
+    set -x PATH $HOME/.node_modules/bin $PATH
 end
 
 # Global aliases
