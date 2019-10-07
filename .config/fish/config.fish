@@ -107,6 +107,7 @@ if status --is-interactive
     set -x VISUAL "$EDITOR"
     set -x MYVIMRC "$HOME/.config/nvim/init.vim"
     set -x ELECTRON_TRASH "trash-cli code"
+    set -x TZ 'America/Los_Angeles'
 
     set -x npm_config_prefix $HOME/.node_modules
 
