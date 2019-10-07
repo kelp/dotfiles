@@ -2,11 +2,16 @@
 export LANG="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 
+PREFIX=/usr/local
+
+#export XCURSOR_PATH="~/.icons:${PREFIX}/share/icons"
+#export XCURSOR_THEME="Adwaita"
+
 # load Xresources file
 xrdb -merge $HOME/.Xresources
 
 # set your background color
-xsetroot -solid dimgray
+xsetroot -solid black
 
 # xidle will lock your display after a period of inactivity
 xidle &
@@ -33,11 +38,11 @@ xset fp rehash &
 # use caps lock as ctrl key
 setxkbmap -option ctrl:nocaps
 
-PREFIX=/usr/local
 
 if [ -x ${PREFIX}/bin/dbus-launch -a -z "${DBUS_SESSION_BUS_ADDRESS}" ]; then
         eval `dbus-launch --sh-syntax --exit-with-x11`
 fi
+
 
 # hided the mouse cursor after you type
 xbanish &
@@ -45,6 +50,7 @@ xbanish &
 # run slstatus bar
 slstatus &
 
-# start cwm!
-#exec cwm
+#xsetroot -cursor_name left_ptr
+
+# start dwm!
 exec dwm
