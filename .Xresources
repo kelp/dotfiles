@@ -53,3 +53,6 @@ xterm*background: black
 xterm*foreground: lightgray
 xterm*faceSize: 7
 xterm*faceName: DejaVu Sans Mono
+
+Xcursor.theme: Adwaita
+!Xcursor.size: 16
