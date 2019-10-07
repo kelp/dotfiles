@@ -24,20 +24,13 @@ if status --is-interactive
     alias vi="nvim"
     alias view="nvim -R"
 
-    if [ $TERM = "vt220" ]
-        # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
-        set -g theme_powerline_fonts no
-        set -g theme_nerd_fonts no
-    	set -g theme_color_scheme terminal-dark-white
-    else
-        # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
-        set -g theme_powerline_fonts yes
-        set -g theme_nerd_fonts yes
-    	set -g theme_color_scheme dark
-    end
+    # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
+    set -g theme_powerline_fonts yes
+    set -g theme_nerd_fonts yes
     set -g theme_display_user ssh
     set -g theme_display_hostname ssh
     set -g theme_show_exit_status yes
+    set -g theme_color_scheme dark
     set -g fish_prompt_pwd_dir_length 4
     set -g theme_project_dir_length 1
     set -g theme_newline_cursor no
@@ -49,9 +42,6 @@ if status --is-interactive
 
     set TZONE (date +%Z)
     set -g theme_date_format "+%H:%M:%S:$TZONE"
-
-    # disable shell git in these large repos. It's way too slow
-    set -g theme_vcs_ignore_paths $HOME/src/openbsd $HOME/src/linux
 
     # disable the theme greeting
     function fish_greeting
@@ -99,6 +89,9 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
+            alias gpg='gpg2'
+            gpgagent $OS
+            #eval (ssh-agent -c)
             gpgagent $OS
             alias pip='pip3.7'
             alias ls='colorls -G'
