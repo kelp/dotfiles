@@ -42,7 +42,7 @@ let g:airline#extensions#tabline#switch_buffers_and_tabs = 1
 
 set laststatus=2
 
-let g:indentLine_char = '⎸'
+let g:indentLine_char = ''
 
 " Disable setting a background color without this we get kind of a grey 
 " washed out look
@@ -303,6 +303,8 @@ Plug 'hashivim/vim-terraform'   " Terraform support for vim
 Plug 'dag/vim-fish'             " Fish shell support
 Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
+
+Plug 'ninjin/vim-openbsd'       "OpenBSD style(8)
 
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
