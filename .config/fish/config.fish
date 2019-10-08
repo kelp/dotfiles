@@ -92,7 +92,6 @@ if status --is-interactive
             alias gpg='gpg2'
             gpgagent $OS
             #eval (ssh-agent -c)
-            gpgagent $OS
             alias pip='pip3.7'
             alias ls='colorls -G'
             #eval (ssh-agent -c)
