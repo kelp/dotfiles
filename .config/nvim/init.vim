@@ -71,10 +71,10 @@ if has('nvim')
 endif
 
 " vim-startify configs
-let g:startify_bookmarks = [ { 'c':
-  \ '$HOME/.homesick/repos/nvim/home/.config/nvim/init.vim'},
-  \ { 'ze': '$HOME/.homesick/repos/dotfiles/home/.zshenv'},
-  \ { 'zr': '$HOME/.homesick/repos/dotfiles/home/.zshrc'}]
+let g:startify_bookmarks = [
+  \ { 'c':  '$HOME/.config/nvim/init.vim'},
+  \ { 'fc': '$HOME/.config/fish/config.fish'},
+  \ ]
 
 let g:startify_commands = [
   \ {'h': 'help reference'},
@@ -281,7 +281,7 @@ if !filereadable(vimplug_exists)
   echo "Installing Vim-Plug..."
   echo ""
   silent !\curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-  \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   let g:not_finish_vimplug = "yes"
 
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -305,6 +305,7 @@ call plug#begin()
 "  Plug 'zchee/deoplete-jedi', { 'for': 'python' }   " Jedi support for deoplete
   "  Plug 'zchee/deoplete-go', { 'for': 'go' }         " Support for go
   "Plug 'mdempsky/gocode', { 'for': 'go' }          " Required by deoplete-go
+  "
 
 " This genrates shell prompt configs simialr to airline
 " Usage: :PromptlineSnapshot ~/promptline.sh
@@ -491,7 +492,7 @@ set modelines=1             " Read a modeline on the last line of the file
 " configure colorscheme onedark
 " Color scheme has to be loaded after plugin initilization
 if !exists('g:not_finish_vimplug')
-	colorscheme onedark
+    colorscheme onedark
 endif
 
 " }}}
