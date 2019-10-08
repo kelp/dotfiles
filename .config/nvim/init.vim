@@ -141,7 +141,7 @@ nnoremap <C-p> :<C-u>FZF<CR>
 let backupdir = stdpath("data") . "/backup"
 if !isdirectory(backupdir)
     call mkdir(backupdir, "p", 0700)
-endif 
+endif
 
 " Protect changes between writes. Default values of
 " updatecount (200 keystrokes) and updatetime
