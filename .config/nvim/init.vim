@@ -37,7 +37,25 @@ set showbreak=↪\
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme='onedark'
-let g:airline#extensions#tabline#enabled = 1 " Enable tab line at top
+let g:airline#extensions#tabline#enabled = 1 " enable tab line at top
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+" key mapping to switch tabs
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
+" warn on mixed indent
+let g:airline#extensions#whitespace#mixed_indent_algo = 2
+let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long',
+  \ 'mixed-indent-file', 'conflicts' ]
+
 " Enable coc extension
 let g:airline#extensions#coc#enabled = 1
 
@@ -51,7 +69,8 @@ if (has("autocmd") && !has("gui_running"))
   augroup colorset
     autocmd!
     let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white })
+    autocmd ColorScheme * call onedark#set_highlight("Normal",
+      \ { "fg": s:white })
     " `bg` will not be styled since there is no `bg` setting
   augroup END
 endif
@@ -152,7 +171,7 @@ set hlsearch          	" highlight all text matching current search pattern
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 set incsearch           " show search matches as you type
 set ignorecase          " ignore case on search
-set smartcase           " case sensitive matches when search includes uppercase
+set smartcase           " case sensitive when search includes uppercase
 set showmatch           " highlight matching [{()}]
 set splitbelow          " open new splits on the bottom
 set splitright          " open new splits on the right"
@@ -237,7 +256,8 @@ set shortmess+=c
 set signcolumn=yes
 "
 " Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other
+" plugin.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -311,7 +331,7 @@ set foldnestmax=10          " 10 nested fold max
 set foldmethod=indent       " fold based on indent level
 set colorcolumn=80          " mark column 80
 set modelines=1             " read a modeline on the last line of the file
-set autoindent              " autoindent
+"set autoindent              " autoindent
 
 " }}}
 "
