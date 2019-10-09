@@ -39,6 +39,7 @@ if status --is-interactive
     set -g theme_title_display_path yes
     set -g theme_title_display_user no
     set -g theme_title_use_abbreviated_path no
+    set -g theme_vcs_ignore_paths $HOME/src/openbsd
 
     set TZONE (date +%Z)
     set -g theme_date_format "+%H:%M:%S:$TZONE"
