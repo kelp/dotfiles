@@ -115,6 +115,15 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 " vim-polyglot installs vim-markdown
 let g:vim_markdown_conceal = 0  " Disable concealing
 
+" OpenBSD style(9)
+augroup filetypedetect
+  au BufRead,BufNewFile *.[ch]
+    \  if getline(1) =~ 'OpenBSD:'
+    \|   setl ft=c.openbsd
+    \|	 call OpenBSD_Style()
+    \| endif
+augroup END
+
 " Python
 augroup vimrc-python
   autocmd!
@@ -122,13 +131,15 @@ augroup vimrc-python
     \ colorcolumn=79 formatoptions+=croq softtabstop=4
     \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
-
 " enable python virtualenv support in airline
 let g:airline#extensions#virtualenv#enabled = 1
 
 " Terraform
 let g:terraform_align = 1           " Use vim-terraform indents
 let g:terraform_fold_sections = 1   " Auto fold terraform
+
+" Vim
+autocmd BufNewFile,BufRead *.vim setlocal noexpandtab tabstop=2 shiftwidth=2
 
 " }}}
 "
@@ -300,8 +311,7 @@ set foldnestmax=10          " 10 nested fold max
 set foldmethod=indent       " fold based on indent level
 set colorcolumn=80          " mark column 80
 set modelines=1             " read a modeline on the last line of the file
-set smartindent             " smart autoindenting
-
+set autoindent              " autoindent
 
 " }}}
 "
