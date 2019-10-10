@@ -131,6 +131,12 @@ autocmd FileType fish setlocal textwidth=79 foldmethod=expr expandtab
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
       \ softtabstop=4
 
+" coc needs gopls for Go completion
+if !executable('gopls')
+  echo "Installing gopls..."
+  silent !go get golang.org/x/tools/gopls
+endif
+
 " Markdown
 " vim-polyglot installs vim-markdown
 let g:vim_markdown_conceal = 0  " Disable concealing
@@ -160,7 +166,7 @@ let g:terraform_fold_sections = 1   " Auto fold terraform
 
 " Vim
 autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2
-      \ softtabstop=2
+      \ softtabstop=2 tabstop=2
 
 " }}}
 "
@@ -181,9 +187,13 @@ set inccommand=nosplit  " show search and replace in real time
 set clipboard=unnamed   " vim clipboard copies to system clipboard
 set autoread 		" reread a file if it's changed outside of vim
 
+" vim-workspace settings
+nnoremap <leader>s :ToggleWorkspace<CR>
+let g:workspace_session_directory = $HOME . '/.local/share/nvim/sessions/'
+
 " }}}
 "
-" Plugin Management {{{
+" Plug Install {{{
 "
 " Plugins are installed with vim-plug
 "
@@ -218,6 +228,11 @@ command! PU PlugUpdate | PlugUpgrade
 " Required:
 call plug#begin()
 
+" }}}
+"
+" {{{ Plugins
+"
+
 " Install plugins
 
 Plug 'dag/vim-fish'             " Fish shell support
@@ -233,7 +248,7 @@ Plug 'vim-airline/vim-airline'              " Powerline like bar
   Plug 'ryanoasis/vim-devicons'             " utf-8 icons for vim-airline
   Plug 'vim-airline/vim-airline-themes'     " Themes
 Plug 'yggdroot/indentline'      " Add a nice indent vertical indicator
-
+Plug 'thaerkh/vim-workspace'    " Automated workspace management
 
 " Finish
 " Required:
