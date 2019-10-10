@@ -39,6 +39,7 @@ if status --is-interactive
     set -g theme_title_display_path yes
     set -g theme_title_display_user no
     set -g theme_title_use_abbreviated_path no
+    set -g theme_vcs_ignore_paths $HOME/src/openbsd
 
     set TZONE (date +%Z)
     set -g theme_date_format "+%H:%M:%S:$TZONE"
@@ -67,6 +68,11 @@ if status --is-interactive
         end
     end
 
+    # If we're inside tmux
+    if set -q TMUX
+        set -x SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
+    end
+
     # OS specific Configs 
     set -x OS (uname -s)
 
@@ -85,7 +91,10 @@ if status --is-interactive
             set -x SYSTEMD_PAGER ''
         case OpenBSD
             alias ls='colorls -G'
-            set -x CVSROOT anoncvs@anoncvs1.usa.openbsd.org:/cvs
+            alias gpg='gpg2'
+            set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
+            gpgagent $OS
+            #eval (ssh-agent -c)
         case Darwin
             gpgagent $OS
         case '*'
@@ -99,6 +108,7 @@ if status --is-interactive
     set -x VISUAL "$EDITOR"
     set -x MYVIMRC "$HOME/.config/nvim/init.vim"
     set -x ELECTRON_TRASH "trash-cli code"
+    set -x TZ 'America/Los_Angeles'
 
     set -x npm_config_prefix $HOME/.node_modules
 
