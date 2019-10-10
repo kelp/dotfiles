@@ -3,13 +3,18 @@
 # Userconfig and other secrets 
 source $HOME/.muttrc-secrets
 
-set folder = imaps://imap.fastmail.com/INBOX
-#set spoolfile = +INBOX
-set spoolfile = imaps://imap.fastmail.com
-set record = "+Sent Items"
-set postponed = "+Drafts"
+set from = "Travis Cole <kelp@plek.org>"
+set my_server = "imap.fastmail.com"
 
-set record=""
+set folder = imaps://$my_server
+set spoolfile = imaps://$my_server
+set record = "=Sent"
+set postponed = "=Drafts"
+
+set imap_check_subscribed = yes
+
+set header_cache = $HOME/.local/mutt/fastmail
+set message_cachedir = $HOME/.local/mutt/fastmail
 
 auto_view text/html    # view html automatically
 alternative_order text/plain text/enriched text/html 
