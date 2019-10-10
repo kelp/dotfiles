@@ -1,29 +1,43 @@
 {
     "languageserver": {
-        "clangd": {
-          "command": "clangd",
-          "args": ["--background-index"],
-          "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-          "filetypes": ["c", "cpp", "objc", "objcpp"]
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "c.openbsd", "cpp", "cuda", "objc", "objcpp"],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": ".ccls-cache"
+                }
+            }
         },
-        "golang": {
-            "command": "gopls",
-            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-            "filetypes": ["go"]
-        },
+   	"golang": {
+             "command": "gopls",
+             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+             "filetypes": ["go"]
+    	},
         "terraform": {
-          "command": "terraform-lsp",
-          "filetypes": ["terraform"],
-          "initializationOptions": {}
+            "command": "terraform-lsp",
+            "filetypes": ["terraform"],
+            "initializationOptions": {}
         },
         "bash": {
             "command": "bash-language-server",
             "args": ["start"],
             "filetypes": ["sh"],
             "ignoredRootPaths": ["~"]
-        },
+        }
     },
     "python.jediEnabled": false,
     "python.setLinter": "flake8",
-    "python.setInterpreter": "python3"
+    "python.setInterpreter": "python3",
+    // https://github.com/neoclide/coc-prettier
+    "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "json", "js"],
+    "coc.preferences.extensionUpdateCheck": "daily",
+    "codeLens.enable": true
 }
