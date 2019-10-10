@@ -54,7 +54,7 @@ nmap <leader>+ <Plug>AirlineSelectNextTab
 " warn on mixed indent
 let g:airline#extensions#whitespace#mixed_indent_algo = 2
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long',
-  \ 'mixed-indent-file', 'conflicts' ]
+      \ 'mixed-indent-file', 'conflicts' ]
 
 " Enable coc extension
 let g:airline#extensions#coc#enabled = 1
@@ -70,7 +70,7 @@ if (has("autocmd") && !has("gui_running"))
     autocmd!
     let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
     autocmd ColorScheme * call onedark#set_highlight("Normal",
-      \ { "fg": s:white })
+          \ { "fg": s:white })
     " `bg` will not be styled since there is no `bg` setting
   augroup END
 endif
@@ -124,11 +124,12 @@ let g:signify_realtime=1 	" Update signs in real time
 
 " Fish Shell
 autocmd FileType fish compiler fish
-autocmd FileType fish setlocal textwidth=79 foldmethod=expr
+autocmd FileType fish setlocal textwidth=79 foldmethod=expr expandtab
+      \ tabstop=4 softtabstop=4 shiftwidth=4
 
 " Go
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-  \ softtabstop=4
+      \ softtabstop=4
 
 " Markdown
 " vim-polyglot installs vim-markdown
@@ -147,8 +148,8 @@ augroup END
 augroup vimrc-python
   autocmd!
   autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
-    \ colorcolumn=79 formatoptions+=croq softtabstop=4
-    \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+        \ colorcolumn=79 formatoptions+=croq softtabstop=4
+        \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
 " enable python virtualenv support in airline
 let g:airline#extensions#virtualenv#enabled = 1
@@ -158,7 +159,8 @@ let g:terraform_align = 1           " Use vim-terraform indents
 let g:terraform_fold_sections = 1   " Auto fold terraform
 
 " Vim
-autocmd BufNewFile,BufRead *.vim setlocal noexpandtab tabstop=2 shiftwidth=2
+autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2
+      \ softtabstop=2
 
 " }}}
 "
