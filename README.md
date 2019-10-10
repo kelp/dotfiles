@@ -35,7 +35,7 @@ happen in those branches.
     dot push origin/arch-server
 
 ## Revert file to state in master
-    dot checkout origin/master <file>
+    dot checkout master <file>
 
 ## rebase changes on master into the branch:
     dot checkout <branch> 
@@ -47,3 +47,6 @@ happen in those branches.
 ## Cherry pick a commit to add to master, you can provide more than one sha
     dot checkout master
     dot cherry-pick <commit sha>
+
+## Merge whole files back into the feature branch.
+    dot checkout master <file name>

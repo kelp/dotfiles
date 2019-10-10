@@ -6,6 +6,6 @@
 	ui = true
 [commit]
 	verbose = true
-	gpgsign = true
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+	gpgsign = false
+#[url "ssh://git@github.com/"]
+#	insteadOf = https://github.com/
