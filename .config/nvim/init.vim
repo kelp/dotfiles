@@ -130,12 +130,17 @@ autocmd FileType fish setlocal textwidth=79 foldmethod=expr expandtab
 " Go
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
       \ softtabstop=4
+" Disable vim-go's autocompletion. Use coc's instead.
+let g:go_code_completion_enabled = 0
 
 " coc needs gopls for Go completion
 if !executable('gopls')
   echo "Installing gopls..."
   silent !go get golang.org/x/tools/gopls
 endif
+" disable vim-go :GoDef short cut (gd)
+" this is handled by coc
+let g:go_def_mapping_enabled = 0
 
 " Markdown
 " vim-polyglot installs vim-markdown
@@ -236,7 +241,8 @@ call plug#begin()
 " Install plugins
 
 Plug 'dag/vim-fish'             " Fish shell support
-Plug 'editorconfig/editorconfig-vim'            " Support editorconfig
+Plug 'editorconfig/editorconfig-vim'                " Support editorconfig
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }  " Go support
 Plug 'hashivim/vim-terraform'   " Terraform support for vim
 Plug 'joshdick/onedark.vim'     " The onedark color theme
 Plug 'mhinz/vim-startify'       " Creates a nice default start screen
