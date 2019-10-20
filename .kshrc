@@ -1,28 +1,48 @@
 [[ -f /etc/ksh.kshrc ]] && . /etc/ksh.kshrc
 
+# Sets extra paths
+set -A paths /usr/games \
+        ~/go/bin \
+        /usr/ports/infrastructure/bin \
+        ~/bin \
+        ~/.cargo/bin \
+        ~/.node_modules/bin
 
-light_green="\[\e[1;32m\]"
-light_red="\[\e[1;31m\]"
-blue="\[\e[0;34m\]"
-ul_blue="\[\e[4;34m\]"
-bright_blue="\[\e[38;5;33m\]"
-yellow="\[\e[0;33m\]"
-gray="\[\e[0;37m\]"
-gray_bg="\[\e[48;5;235m\]"
-gray_fg="\[\e[38;5;235m\]"
-reset="\[\e[m\]"
+for d in "${paths[@]}"; do
+        [[ -d "${d}" ]] && PATH="${PATH}:$d"
+done
+
 
 EDITOR="nvim"
 LSCOLORS="exgxfxdxcxegedabagacad"
 TZ="American/Los_Angeles"
 VISUAL="nvim"
-PS1="$gray_bg$bright_blue \w $reset$gray_fg$reset "
+HISTFILE=~/.ksh_history
+HISTSIZE=1000
 
-DEVPATH=$HOME/.node_modules/bin:$HOME/go/bin:$HOME/.cargo/bin
+set -o vi
 
-PATH=$HOME/bin:$DEVPATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games
+# Disabled until i figure out how to make it work with ksh
+#if [ -e ~/.git-prompt ]; then
+	# shellcheck source=/home/qbit/.git-prompt
+#	. ~/.git-prompt
+#	export GIT_PS1_SHOWDIRTYSTATE=true
+#	export GIT_PS1_SHOWUNTRACKEDFILES=true
+#	export GIT_PS1_SHOWCOLORHINTS=true
+#	export GIT_PS1_SHOWUPSTREAM="auto"
+#fi
 
-export EDITOR HOM LSCOLORS PATH PS1 TZ TERM VISUAL
+# Colors for use in the prompt and elsewere.
+gray_bg="\[\e[48;5;235m\]"
+gray_fg="\[\e[38;5;235m\]"
+reset="\[\e[m\]"
+prompt=""
+#
+# TODO Set term to ansi on OpenBSD to get colors
+# If we're using ansi, use 8 bit colors.
+[[ $TERM = "vt220" ]] && prompt="\$"
+
+PS1="$gray_bg$bright_blue \w $reset$gray_fg$prompt$reset "
 
 alias df='df -h'
 alias du='du -h'
@@ -44,3 +64,5 @@ port() {
 if [ -e ~/.ksh_completions ]; then
 	. ~/.ksh_completions
 fi
+
+export EDITOR HISTFILE HISTSIZE HOME LSCOLORS PATH PS1 TERM TZ VISUAL
