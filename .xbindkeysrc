@@ -51,13 +51,13 @@
 
 # Increase backlight
 #"xbacklight -inc 10"
-"wsconsctl display.brightness+=10"
-   XF86MonBrightnessUp
+#"wsconsctl display.brightness+=10"
+#   XF86MonBrightnessUp
 
 # Decrease backlight
 #"xbacklight -dec 10"
-"wsconsctl display.brightnes-=10"
-   XF86MonBrightnessDown
+#"wsconsctl display.brightnes-=10"
+#   XF86MonBrightnessDown
 
 ##################################
 # End of xbindkeys configuration #
