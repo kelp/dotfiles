@@ -1,6 +1,7 @@
 # set UTF-8 everywhere
 export LANG="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
+export ENV=$HOME/.kshrc
 
 PREFIX=/usr/local
 
