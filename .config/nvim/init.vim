@@ -78,6 +78,8 @@ endif
 " Enable 24 bit colors if we can
 if (has("termguicolors"))
   set termguicolors
+else
+  set t_Co=8
 endif
 
 set background=dark
