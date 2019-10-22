@@ -1,0 +1,135 @@
+# Heavily borrowed from: 
+# https://github.com/qbit/dotfiles/blob/master/common/dot_ksh_completions
+#
+# Package Managers
+# OpenBSD pkg_*
+if [ -d /var/db/pkg ]; then
+	PKG_LIST=$(ls -1 /var/db/pkg)
+	set -A complete_pkg_delete -- $PKG_LIST
+	set -A complete_pkg_info -- $PKG_LIST
+
+	set -A complete_pkg_1 -- add check create delete info
+	set -A complete_pkg_2 -- $PKG_LIST
+fi
+
+# Homebrew
+if [ -e /usr/local/bin/brew ]; then
+	PKG_LIST=$(ls -1 /usr/local/Cellar)
+	set -A complete_brew_1 -- \
+		commands \
+		config \
+		create \
+		doctor \
+		edit \
+		help \
+		info \
+		install \
+		list \
+		search \
+		uninstall \
+		update \
+		upgrade
+	set -A complete_brew_2 -- $PKG_LIST
+fi
+# / Package Managers
+
+# ssh, scp, mosh
+set -A SSH_KNOWN_HOSTS ~/.ssh/known_hosts
+
+if [ -f /etc/ssh/ssh_known_hosts ]; then
+	SSH_KNOWN_HOSTS="${SSH_KNOWN_HOSTS[@]} /etc/ssh/ssh_known_hosts"
+fi
+
+HOST_LIST=$(awk \
+	'{split($1,a,","); gsub("].*", "", a[1]); gsub("\\[", "", a[1]); print a[1] " root@" a[1]}' \
+		$SSH_KNOWN_HOSTS | sort | uniq)
+
+set -A complete_ssh -- $HOST_LIST
+set -A complete_scp -- $HOST_LIST
+set -A complete_mosh -- $HOST_LIST
+# / ssh, scp, mosh
+
+# Utilities
+#set -A complete_man_1 -- $(MANPATH=/usr/share/man man -k Nm~. | cut -d\( -f1 | tr -d ,)
+
+set -A complete_kill_1 -- -9 -HUP -INFO -KILL -TERM
+
+set -A complete_ifconfig_1 -- $(ifconfig | grep ^[a-z] | cut -d: -f1)
+
+set -A complete_signify_1 -- -C -G -S -V
+set -A complete_signify_2 -- -q -p -x -c -m -t -z
+set -A complete_signify_3 -- -p -x -c -m -t -z
+
+pgrep -fq '/usr/sbin/vmd'
+if [ $? = 0 ]; then
+	set -A complete_vmctl -- console load reload start stop reset status send receive
+	set -A complete_vmctl_2 -- $(vmctl status | awk '!/NAME/{print $NF}')
+fi
+
+if [ -x /usr/rbin/rcctl ]; then
+	set -A complete_rcctl_1 -- disable enable get ls order set restart start stop
+	set -A complete_rcctl_2 -- $(rcctl ls all)
+fi
+
+set -A complete_make_1 -- \
+	clean \
+	install \
+	port-lib-depends-check \
+	reinstall \
+	repackage
+
+set -A complete_gpg2 -- \
+		--armor \
+		--clearsign \
+		--decrypt \
+		--detach-sig \
+		--list-key \
+		--receive-keys \
+		--refresh \
+		--sign \
+		--verify
+
+if [ -f /dev/mixer ]; then
+	set -A complete_mixerctl_1 -- $(mixerctl | cut -d= -f 1)
+fi
+
+# / Utilities
+
+# SCM
+set -A complete_got_1 -- \
+	bl blame \
+	bo backout \
+	br branch \
+	ci commit \
+	co checkout \
+	cy cherrypick \
+	di diff \
+	he histedit \
+	im import \
+	in init \
+	log \
+	rb rebase \
+	ref \
+	rm remove \
+	rv revert \
+	sg stage \
+	st status \
+	tr tree \
+	ug unstage \
+	up update
+
+set -A complete_git_1 -- \
+	checkout cherry-pick clean clone commit config \
+	mpull mpush \
+	pull push \
+	status
+
+# / SCM
+
+function reload_completions {
+	if [ -e ~/.ksh_completions ]; then
+		. ~/.ksh_completions
+		echo "ksh completions reloaded"
+	fi
+}
+
