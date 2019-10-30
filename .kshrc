@@ -49,7 +49,7 @@ if [ $TERM = "vt220" ]; then
 	export TERM=ansi
 fi
 # Show user@host if we're on a remote ssh session.
-if [ "SSH_CONNECTION" ]; then
+if [ "$SSH_CONNECTION" ]; then
 	ssh_prompt="${white_bg} ${blue_fg}\u@\h ${grey_bg}${white_fg}${prompt}"
 fi
 
