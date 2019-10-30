@@ -1,5 +1,8 @@
 [[ -f /etc/ksh.kshrc ]] && . /etc/ksh.kshrc
 
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+
 # Sets extra paths
 set -A paths /usr/games \
         ~/go/bin \
