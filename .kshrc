@@ -15,10 +15,11 @@ done
 
 EDITOR="nvim"
 LSCOLORS="exgxfxdxcxegedabagacad"
-TZ="American/Los_Angeles"
+TZ="US/Pacific"
 VISUAL="nvim"
 HISTFILE=~/.ksh_history
 HISTSIZE=1000
+OS=$(uname)
 
 set -o vi
 
@@ -43,7 +44,10 @@ prompt=""
 #
 # TODO Set term to ansi on OpenBSD to get colors
 # If we're using ansi, use 8 bit colors.
-[[ "$TERM" = "vt220" ]] && prompt="\$"
+if [ $TERM = "vt220" ]; then
+	prompt="\$"
+	export TERM=ansi
+fi
 # Show user@host if we're on a remote ssh session.
 if [ "SSH_CONNECTION" ]; then
 	ssh_prompt="${white_bg} ${blue_fg}\u@\h ${grey_bg}${white_fg}${prompt}"
@@ -58,6 +62,9 @@ alias vi=nvim
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
 
+# TODO make this do something nicer
+cd() { command cd "$@"; echo -ne "\033]0;${PWD##*/}\007"; }
+
 src() {
 	cd /usr/src/*/$1 || return
 }
@@ -67,6 +74,12 @@ port() {
 		cd /usr/ports/*/*/$1 2>/dev/null || \
 		return
 }
+
+if [ "$OS" = "OpenBSD" ]; then
+	if [ ! -f ~/.cvsrc ]; then
+		export CVSROOT="anoncvs@anoncvs4.usa.openbsd.org:/cvs"
+	fi
+fi
 
 if [ -e ~/.ksh_completions ]; then
 	. ~/.ksh_completions
