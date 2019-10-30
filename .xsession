@@ -53,5 +53,12 @@ slstatus &
 
 #xsetroot -cursor_name left_ptr
 
+# start some things I always run
+st &
+st &
+st &
+st & 
+firefox &
+
 # start dwm!
 exec dwm
