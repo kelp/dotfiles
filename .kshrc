@@ -33,16 +33,23 @@ set -o vi
 #fi
 
 # Colors for use in the prompt and elsewere.
-gray_bg="\[\e[48;5;235m\]"
-gray_fg="\[\e[38;5;235m\]"
+white_bg="\[\e[48;5;255m\]"
+white_fg="\[\e[38;5;255m\]"
+blue_fg="\[\e[38;5;75m\]"
+grey_bg="\[\e[48;5;235m\]"
+grey_fg="\[\e[38;5;235m\]"
 reset="\[\e[m\]"
 prompt=""
 #
 # TODO Set term to ansi on OpenBSD to get colors
 # If we're using ansi, use 8 bit colors.
-[[ $TERM = "vt220" ]] && prompt="\$"
+[[ "$TERM" = "vt220" ]] && prompt="\$"
+# Show user@host if we're on a remote ssh session.
+if [ "SSH_CONNECTION" ]; then
+	ssh_prompt="${white_bg} ${blue_fg}\u@\h ${grey_bg}${white_fg}${prompt}"
+fi
 
-PS1="$gray_bg$bright_blue \w $reset$gray_fg$prompt$reset "
+PS1="${grey_bg}${bright_blue}${ssh_prompt} \w $reset$grey_fg$prompt$reset "
 
 alias df='df -h'
 alias du='du -h'
