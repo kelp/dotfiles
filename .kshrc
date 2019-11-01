@@ -40,8 +40,8 @@ set -o vi
 white_bg="\[\e[48;5;255m\]"
 white_fg="\[\e[38;5;255m\]"
 blue_fg="\[\e[38;5;75m\]"
-grey_bg="\[\e[48;5;235m\]"
-grey_fg="\[\e[38;5;235m\]"
+grey_bg="\[\e[48;5;239m\]"
+grey_fg="\[\e[38;5;239m\]"
 reset="\[\e[m\]"
 prompt=""
 #
