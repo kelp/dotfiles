@@ -36,7 +36,7 @@ set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,spac
 set showbreak=↪\
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme='onedark'
+let g:airline_theme='nord'
 let g:airline#extensions#tabline#enabled = 1 " enable tab line at top
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 " key mapping to switch tabs
@@ -65,15 +65,15 @@ let g:indentLine_char = ''
 
 " Disable setting a background color without this we get kind of a grey
 " washed out look
-if (has("autocmd") && !has("gui_running"))
-  augroup colorset
-    autocmd!
-    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal",
-          \ { "fg": s:white })
+"if (has("autocmd") && !has("gui_running"))
+"  augroup colorset
+"    autocmd!
+"    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+"    autocmd ColorScheme * call nord#set_highlight("Normal",
+"          \ { "fg": s:white })
     " `bg` will not be styled since there is no `bg` setting
-  augroup END
-endif
+"  augroup END
+"endif
 
 " Enable 24 bit colors if we can
 if (has("termguicolors"))
@@ -82,8 +82,14 @@ else
   set t_Co=8
 endif
 
+" Theme configs
 set background=dark
 let g:onedark_terminal_italics=1
+let g:nord_italic = 1
+let g:nord_uniform_diff_background = 0
+let g:nord_italic_comments = 1
+let g:nord_underline = 0
+let g:nord_cursor_line_number_background = 0
 
 " vim-startify configs
 let g:startify_bookmarks = [
@@ -246,7 +252,8 @@ Plug 'dag/vim-fish'             " Fish shell support
 Plug 'editorconfig/editorconfig-vim'                " Support editorconfig
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }  " Go support
 Plug 'hashivim/vim-terraform'   " Terraform support for vim
-Plug 'joshdick/onedark.vim'     " The onedark color theme
+"Plug 'joshdick/onedark.vim'     " The onedark color theme
+Plug 'arcticicestudio/nord-vim'  " The nord theme
 Plug 'mhinz/vim-startify'       " Creates a nice default start screen
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of Completion
 Plug 'ninjin/vim-openbsd'       " OpenBSD style(8)
@@ -366,7 +373,7 @@ set modelines=1             " read a modeline on the last line of the file
 " configure colorscheme onedark
 " Color scheme has to be loaded after plugin initilization
 if !exists('g:not_finish_vimplug')
-    colorscheme onedark
+    colorscheme nord
 endif
 
 " }}}
