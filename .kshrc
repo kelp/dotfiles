@@ -75,6 +75,7 @@ alias view='nvim -R'
 alias vi=nvim
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
+alias mutt='neomutt'
 
 # TODO make this do something nicer
 cd() { command cd "$@"; echo -ne "\033]0;${PWD##*/}\007"; }
