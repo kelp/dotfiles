@@ -26,6 +26,16 @@ OS=$(uname)
 
 set -o vi
 
+LPREFIX=/usr/local
+
+if [ "$OS" = "OpenBSD" ]; then
+	if [ ! -f ~/.cvsrc ]; then
+		export CVSROOT="anoncvs@anoncvs4.usa.openbsd.org:/cvs"
+	fi
+else
+	LPREFIX=/usr
+fi
+
 # Disabled until i figure out how to make it work with ksh
 #if [ -e ~/.git-prompt ]; then
 	# shellcheck source=/home/qbit/.git-prompt
@@ -44,7 +54,7 @@ grey_bg="\[\e[48;5;239m\]"
 grey_fg="\[\e[38;5;239m\]"
 reset="\[\e[m\]"
 prompt=""
-#
+
 # TODO Set term to ansi on OpenBSD to get colors
 # If we're using ansi, use 8 bit colors.
 if [ $TERM = "vt220" ]; then
@@ -88,12 +98,6 @@ if [ -e ${LPREFIX}/bin/keychain ]; then
 
 	# shellcheck source=/home/qbit/.keychain/slip.bold.daemon-sh-gpg
 	[ -e "${keychain_conf}-gpg" ] && . ${keychain_conf}-gpg
-fi
-
-if [ "$OS" = "OpenBSD" ]; then
-	if [ ! -f ~/.cvsrc ]; then
-		export CVSROOT="anoncvs@anoncvs4.usa.openbsd.org:/cvs"
-	fi
 fi
 
 if [ -e ~/.ksh_completions ]; then
