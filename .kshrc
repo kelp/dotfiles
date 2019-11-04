@@ -99,6 +99,7 @@ dotc() {
 }
 dotb() {
 	dot checkout $_branch
+	dot merge master -m "Merge branch 'master' into $_branch"
 }
 
 if [ -e ${LPREFIX}/bin/keychain ]; then
