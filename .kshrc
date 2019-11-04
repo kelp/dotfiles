@@ -76,6 +76,7 @@ alias vi=nvim
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
 alias mutt='neomutt'
+alias gpg='gpg2'
 
 # TODO make this do something nicer
 cd() { command cd "$@"; echo -ne "\033]0;${PWD##*/}\007"; }
@@ -88,6 +89,16 @@ port() {
 	cd /usr/ports/*/$1 2>/dev/null || \
 		cd /usr/ports/*/*/$1 2>/dev/null || \
 		return
+}
+
+dotc() {
+	_branch=$(dot branch | grep \* | cut -d ' ' -f2)
+	dot stash
+	dot checkout master
+	dot stash pop
+}
+dotb() {
+	dot checkout $_branch
 }
 
 if [ -e ${LPREFIX}/bin/keychain ]; then
