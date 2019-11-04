@@ -261,7 +261,7 @@ Plug 'sheerun/vim-polyglot'     " Syntax and indentation for many languages
 Plug 'vim-airline/vim-airline'              " Powerline like bar
   Plug 'mhinz/vim-signify'                  " Show vcs changes per line
   Plug 'ryanoasis/vim-devicons'             " utf-8 icons for vim-airline
-  Plug 'vim-airline/vim-airline-themes'     " Themes
+  "Plug 'vim-airline/vim-airline-themes'     " Themes
 Plug 'yggdroot/indentline'      " Add a nice indent vertical indicator
 Plug 'thaerkh/vim-workspace'    " Automated workspace management
 

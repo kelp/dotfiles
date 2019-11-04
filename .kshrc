@@ -61,9 +61,11 @@ PS1="${grey_bg}${bright_blue}${ssh_prompt} \w $reset$grey_fg$prompt$reset "
 alias df='df -h'
 alias du='du -h'
 alias ls='colorls -GF'
+alias view='nvim -R'
 alias vi=nvim
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
+alias mutt='neomutt'
 
 # TODO make this do something nicer
 cd() { command cd "$@"; echo -ne "\033]0;${PWD##*/}\007"; }
@@ -77,6 +79,17 @@ port() {
 		cd /usr/ports/*/*/$1 2>/dev/null || \
 		return
 }
+
+if [ -e ${LPREFIX}/bin/keychain ]; then
+	${LPREFIX}/bin/keychain --gpg2 --inherit any --agents ssh,gpg -q -Q
+	keychain_conf="$HOME/.keychain/$(uname -n)-sh"
+
+	# shellcheck source=/home/qbit/.keychain/slip.bold.daemon-sh
+	[ -e "${keychain_conf}" ] && . ${keychain_conf}
+
+	# shellcheck source=/home/qbit/.keychain/slip.bold.daemon-sh-gpg
+	[ -e "${keychain_conf}-gpg" ] && . ${keychain_conf}-gpg
+fi
 
 if [ "$OS" = "OpenBSD" ]; then
 	if [ ! -f ~/.cvsrc ]; then
