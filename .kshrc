@@ -81,7 +81,8 @@ port() {
 }
 
 if [ -e ${LPREFIX}/bin/keychain ]; then
-	${LPREFIX}/bin/keychain --gpg2 --inherit any --agents ssh,gpg -q -Q
+	#${LPREFIX}/bin/keychain --gpg2 --inherit any --agents ssh,gpg -q -Q
+	${LPREFIX}/bin/keychain --inherit any --agents ssh -q -Q
 	keychain_conf="$HOME/.keychain/$(uname -n)-sh"
 
 	# shellcheck source=/home/qbit/.keychain/slip.bold.daemon-sh
