@@ -26,6 +26,16 @@ OS=$(uname)
 
 set -o vi
 
+LPREFIX=/usr/local
+
+if [ "$OS" = "OpenBSD" ]; then
+	if [ ! -f ~/.cvsrc ]; then
+		export CVSROOT="anoncvs@anoncvs4.usa.openbsd.org:/cvs"
+	fi
+else
+	LPREFIX=/usr
+fi
+
 # Disabled until i figure out how to make it work with ksh
 #if [ -e ~/.git-prompt ]; then
 	# shellcheck source=/home/qbit/.git-prompt
@@ -44,7 +54,7 @@ grey_bg="\[\e[48;5;239m\]"
 grey_fg="\[\e[38;5;239m\]"
 reset="\[\e[m\]"
 prompt=""
-#
+
 # TODO Set term to ansi on OpenBSD to get colors
 # If we're using ansi, use 8 bit colors.
 if [ $TERM = "vt220" ]; then
@@ -66,6 +76,7 @@ alias vi=nvim
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
 alias mutt='neomutt'
+alias gpg='gpg2'
 
 # TODO make this do something nicer
 cd() { command cd "$@"; echo -ne "\033]0;${PWD##*/}\007"; }
@@ -80,22 +91,25 @@ port() {
 		return
 }
 
+dotc() {
+	_branch=$(dot branch | grep \* | cut -d ' ' -f2)
+	dot stash
+	dot checkout master
+	dot stash pop
+}
+dotb() {
+	dot checkout $_branch
+	dot merge master -m "Merge branch 'master' into $_branch"
+}
+
 if [ -e ${LPREFIX}/bin/keychain ]; then
 	#${LPREFIX}/bin/keychain --gpg2 --inherit any --agents ssh,gpg -q -Q
 	${LPREFIX}/bin/keychain --inherit any --agents ssh -q -Q
 	keychain_conf="$HOME/.keychain/$(uname -n)-sh"
 
-	# shellcheck source=/home/qbit/.keychain/slip.bold.daemon-sh
 	[ -e "${keychain_conf}" ] && . ${keychain_conf}
 
-	# shellcheck source=/home/qbit/.keychain/slip.bold.daemon-sh-gpg
 	[ -e "${keychain_conf}-gpg" ] && . ${keychain_conf}-gpg
-fi
-
-if [ "$OS" = "OpenBSD" ]; then
-	if [ ! -f ~/.cvsrc ]; then
-		export CVSROOT="anoncvs@anoncvs4.usa.openbsd.org:/cvs"
-	fi
 fi
 
 if [ -e ~/.ksh_completions ]; then
