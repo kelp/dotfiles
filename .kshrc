@@ -76,6 +76,7 @@ alias vi=nvim
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
 alias mutt='neomutt'
+alias gpg='gpg2'
 
 # TODO make this do something nicer
 cd() { command cd "$@"; echo -ne "\033]0;${PWD##*/}\007"; }
@@ -90,14 +91,24 @@ port() {
 		return
 }
 
+dotc() {
+	_branch=$(dot branch | grep \* | cut -d ' ' -f2)
+	dot stash
+	dot checkout master
+	dot stash pop
+}
+dotb() {
+	dot checkout $_branch
+	dot merge master -m "Merge branch 'master' into $_branch"
+}
+
 if [ -e ${LPREFIX}/bin/keychain ]; then
-	${LPREFIX}/bin/keychain --gpg2 --inherit any --agents ssh,gpg -q -Q
+	#${LPREFIX}/bin/keychain --gpg2 --inherit any --agents ssh,gpg -q -Q
+	${LPREFIX}/bin/keychain --inherit any --agents ssh -q -Q
 	keychain_conf="$HOME/.keychain/$(uname -n)-sh"
 
-	# shellcheck source=/home/qbit/.keychain/slip.bold.daemon-sh
 	[ -e "${keychain_conf}" ] && . ${keychain_conf}
 
-	# shellcheck source=/home/qbit/.keychain/slip.bold.daemon-sh-gpg
 	[ -e "${keychain_conf}-gpg" ] && . ${keychain_conf}-gpg
 fi
 
