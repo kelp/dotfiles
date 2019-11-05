@@ -1,6 +1,6 @@
 # vim: filetype=muttrc
 #
-# Userconfig and other secrets 
+# Userconfig and other secrets
 source $HOME/.muttrc-secrets
 
 set from = "Travis Cole <kelp@plek.org>"
@@ -10,6 +10,13 @@ set folder = imaps://$my_server
 set spoolfile = imaps://$my_server
 set record = "=Sent"
 set postponed = "=Drafts"
+set sort=threads
+
+# Headers to show
+ignore *
+unignore from date subject to cc
+unignore organizatoin organisatoin xmailer: x-mailing-list:
+unignore posted-to: list-id:
 
 set imap_check_subscribed = yes
 
@@ -17,12 +24,13 @@ set header_cache = $HOME/.local/mutt/fastmail
 set message_cachedir = $HOME/.local/mutt/fastmail
 
 auto_view text/html    # view html automatically
-alternative_order text/plain text/enriched text/html 
+alternative_order text/plain text/enriched text/html
 set mailcap_path = ~/.mailcap
 
 bind editor <space> noop
 macro index,pager y "<save-message>$spoolfile/Archive<enter><enter>" "Archive"
 macro index,pager d "<save-message>$spoolfile/Trash<enter><enter>" "Trash"
+bind index g noop
 macro index gi "<change-folder>$spoolfile/INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>$spoolfile/Archive<enter>" "Go to all mail"
 # Not sure yet what if any the Fastmail equivilent is
