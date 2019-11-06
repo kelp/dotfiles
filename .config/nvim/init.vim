@@ -248,22 +248,23 @@ call plug#begin()
 
 " Install plugins
 
+Plug 'arcticicestudio/nord-vim'  " The nord theme
 Plug 'dag/vim-fish'             " Fish shell support
 Plug 'editorconfig/editorconfig-vim'                " Support editorconfig
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }  " Go support
 Plug 'hashivim/vim-terraform'   " Terraform support for vim
 "Plug 'joshdick/onedark.vim'     " The onedark color theme
-Plug 'arcticicestudio/nord-vim'  " The nord theme
 Plug 'mhinz/vim-startify'       " Creates a nice default start screen
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of Completion
 Plug 'ninjin/vim-openbsd'       " OpenBSD style(8)
+Plug 'ntpeters/vim-better-whitespace'   " Highlight extra whitespace
 Plug 'sheerun/vim-polyglot'     " Syntax and indentation for many languages
+Plug 'thaerkh/vim-workspace'    " Automated workspace management
 Plug 'vim-airline/vim-airline'              " Powerline like bar
   Plug 'mhinz/vim-signify'                  " Show vcs changes per line
   Plug 'ryanoasis/vim-devicons'             " utf-8 icons for vim-airline
   "Plug 'vim-airline/vim-airline-themes'     " Themes
 Plug 'yggdroot/indentline'      " Add a nice indent vertical indicator
-Plug 'thaerkh/vim-workspace'    " Automated workspace management
 
 " Finish
 " Required:
@@ -273,6 +274,12 @@ call plug#end()
 "
 " Syntax, Linting and Code Completion {{{
 "
+" vim-better-whitespace config
+let g:better_whitespace_ctermcolor='grey'
+let g:better_whitespace_guicolor='grey'
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=0
+let g:show_spaces_that_precede_tabs=1
 
 " coc settings
 "
@@ -346,6 +353,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "
 
 syntax on   " enable syntax highlighting
+
 "
 " }}}
 "
