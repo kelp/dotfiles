@@ -96,6 +96,8 @@ if status --is-interactive
             /usr/local/bin/keychain --inherit any --agents ssh -q -Q
             set keychain_conf "$HOME/.keychain/(uname -n)-fish"
             test -e $keychain_conf && source $keychain_conf
+        case Darwin
+            # Nothing here curretly
         case '*'
             echo "I don't know what OS this is"
     end
