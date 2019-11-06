@@ -23,8 +23,13 @@ if status --is-interactive
     end
 
     # Aliases
-    alias vi="nvim"
-    alias view="nvim -R"
+    if command -sq nvim
+        alias vi='nvim'
+        alias view='nvim -R'
+    end
+    if command -sq doas
+        alias sudo='doas'
+    end
 
     # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
     set -g theme_powerline_fonts yes
@@ -64,6 +69,11 @@ if status --is-interactive
         end
     end
 
+    # Setup keychain
+    keychain --inherit any --agents ssh -q -Q
+    set keychain_conf "$HOME/.keychain/(uname -n)-fish"
+    test -e $keychain_conf && source $keychain_conf
+
     # If we're inside tmux
     if set -q TMUX
         set -x SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
@@ -93,9 +103,7 @@ if status --is-interactive
             set -x LSCOLORS 'exgxfxdxcxegedabagacad'
             motd
         case Darwin
-            /usr/local/bin/keychain --inherit any --agents ssh -q -Q
-            set keychain_conf "$HOME/.keychain/(uname -n)-fish"
-            test -e $keychain_conf && source $keychain_conf
+            # Nothing here currenlty
         case '*'
             echo "I don't know what OS this is"
     end
