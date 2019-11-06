@@ -101,6 +101,7 @@ if status --is-interactive
             set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
             # I prefer gnu dircolors, this gets close :/
             set -x LSCOLORS 'exgxfxdxcxegedabagacad'
+            motd
         case Darwin
             # Nothing here currenlty
         case '*'
