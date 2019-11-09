@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # A handy script to bootstrap / clone my dotfiles setup to a new system
 # Borrowed from https://www.atlassian.com/git/tutorials/dotfiles
