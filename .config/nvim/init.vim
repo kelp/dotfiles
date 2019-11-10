@@ -36,7 +36,6 @@ set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,spac
 set showbreak=↪\
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme='nord'
 let g:airline#extensions#tabline#enabled = 1 " enable tab line at top
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 " key mapping to switch tabs
@@ -63,18 +62,6 @@ set laststatus=2
 
 let g:indentLine_char = ''
 
-" Disable setting a background color without this we get kind of a grey
-" washed out look
-"if (has("autocmd") && !has("gui_running"))
-"  augroup colorset
-"    autocmd!
-"    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-"    autocmd ColorScheme * call nord#set_highlight("Normal",
-"          \ { "fg": s:white })
-    " `bg` will not be styled since there is no `bg` setting
-"  augroup END
-"endif
-
 " Enable 24 bit colors if we can
 if (has("termguicolors"))
   set termguicolors
@@ -83,8 +70,7 @@ else
 endif
 
 " Theme configs
-set background=dark
-let g:onedark_terminal_italics=1
+"set background=dark
 let g:nord_italic = 1
 let g:nord_uniform_diff_background = 0
 let g:nord_italic_comments = 1
@@ -105,17 +91,12 @@ let g:startify_fortune_use_unicode = 1  " Use utf-8
 let g:startify_change_to_dir = 1        " Change to dir of file
 let g:startify_change_to_vcs_root = 1   " Change to vcs dir of file
 
-" }}}
-"
-" Autocmd Rules {{{
-"
-
-" Remember cursor position
-augroup vimrc-remember-cursor-position
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") |
-        \ exe "normal! g`\"" | endif
-augroup END
+" vim-better-whitespace config
+let g:better_whitespace_ctermcolor='grey'
+let g:better_whitespace_guicolor='grey'
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=0
+let g:show_spaces_that_precede_tabs=1
 
 " }}}
 "
@@ -131,15 +112,19 @@ let g:signify_realtime=1 	" Update signs in real time
 "
 
 " Fish Shell
-autocmd FileType fish compiler fish
-autocmd FileType fish setlocal textwidth=79 foldmethod=expr expandtab
-      \ tabstop=4 softtabstop=4 shiftwidth=4
+augroup initvim-fish-setup
+  autocmd FileType fish compiler fish
+  autocmd FileType fish setlocal textwidth=79 foldmethod=expr expandtab
+        \ tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
 
 " Go
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-      \ softtabstop=4
-" Disable vim-go's autocompletion. Use coc's instead.
-let g:go_code_completion_enabled = 0
+augroup initvim-go-setup
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+        \ softtabstop=4
+  " Disable vim-go's autocompletion. Use coc's instead.
+  let g:go_code_completion_enabled = 0
+augroup END
 
 " coc needs gopls for Go completion
 if !executable('gopls')
@@ -155,7 +140,7 @@ let g:go_def_mapping_enabled = 0
 let g:vim_markdown_conceal = 0  " Disable concealing
 
 " OpenBSD style(9)
-augroup filetypedetect
+augroup initvim-openbsd
   au BufRead,BufNewFile *.[ch]
     \  if getline(1) =~ 'OpenBSD:'
     \|   setl ft=c.openbsd
@@ -164,7 +149,7 @@ augroup filetypedetect
 augroup END
 
 " Python
-augroup vimrc-python
+augroup initvim-python
   autocmd!
   autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
         \ colorcolumn=79 formatoptions+=croq softtabstop=4
@@ -178,8 +163,10 @@ let g:terraform_align = 1           " Use vim-terraform indents
 let g:terraform_fold_sections = 1   " Auto fold terraform
 
 " Vim
+augroup initvim-vim
 autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2
       \ softtabstop=2 tabstop=2
+augroup END
 
 " }}}
 "
@@ -187,7 +174,7 @@ autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2
 "
 
 " Searching
-set hlsearch          	" highlight all text matching current search pattern
+set hlsearch            " highlight all text matching current search pattern
 " Turn off search matches with space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 set incsearch           " show search matches as you type
@@ -198,11 +185,18 @@ set splitbelow          " open new splits on the bottom
 set splitright          " open new splits on the right"
 set inccommand=nosplit  " show search and replace in real time
 set clipboard=unnamed   " vim clipboard copies to system clipboard
-set autoread 		" reread a file if it's changed outside of vim
+set autoread		        " reread a file if it's changed outside of vim
 
 " vim-workspace settings
 nnoremap <leader>s :ToggleWorkspace<CR>
 let g:workspace_session_directory = $HOME . '/.local/share/nvim/sessions/'
+
+" Remember cursor position
+augroup initvim-remember-cursor-position
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") |
+        \ exe "normal! g`\"" | endif
+augroup END
 
 " }}}
 "
@@ -210,6 +204,20 @@ let g:workspace_session_directory = $HOME . '/.local/share/nvim/sessions/'
 "
 " Plugins are installed with vim-plug
 "
+
+" Utility to run PlugInstall and guard against loading color schemes
+" before we're ready.
+if !exists('*SetupPlug')
+  function SetupPlug()
+    let g:not_finish_vimplug = "yes"
+    PlugInstall --sync
+    unlet g:not_finish_vimplug
+    "set verbose=15
+    source $MYVIMRC | q
+    "set verbose=0
+  endfunction
+endif
+
 " Test if vim-plug is installed
 let vimplug_exists=expand('~/.local/share/nvim/site/autoload/plug.vim')
 
@@ -223,15 +231,14 @@ if !filereadable(vimplug_exists)
   echo ""
   silent !\curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
   \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  let g:not_finish_vimplug = "yes"
 
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  autocmd VimEnter * call SetupPlug()
 endif
 
 " Install missing plugins on startup
 autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall --sync | q
+  \|   call SetupPlug()
   \| endif
 
 " Shortcut to upgrade all plugins, including Plug
@@ -253,7 +260,7 @@ Plug 'dag/vim-fish'             " Fish shell support
 Plug 'editorconfig/editorconfig-vim'                " Support editorconfig
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }  " Go support
 Plug 'hashivim/vim-terraform'   " Terraform support for vim
-"Plug 'joshdick/onedark.vim'     " The onedark color theme
+Plug 'junegunn/vim-plug'        " For :help plug
 Plug 'mhinz/vim-startify'       " Creates a nice default start screen
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of Completion
 Plug 'ninjin/vim-openbsd'       " OpenBSD style(8)
@@ -263,7 +270,7 @@ Plug 'thaerkh/vim-workspace'    " Automated workspace management
 Plug 'vim-airline/vim-airline'              " Powerline like bar
   Plug 'mhinz/vim-signify'                  " Show vcs changes per line
   Plug 'ryanoasis/vim-devicons'             " utf-8 icons for vim-airline
-  "Plug 'vim-airline/vim-airline-themes'     " Themes
+  Plug 'vim-airline/vim-airline-themes'     " Themes
 Plug 'yggdroot/indentline'      " Add a nice indent vertical indicator
 
 " Finish
@@ -274,13 +281,6 @@ call plug#end()
 "
 " Syntax, Linting and Code Completion {{{
 "
-" vim-better-whitespace config
-let g:better_whitespace_ctermcolor='grey'
-let g:better_whitespace_guicolor='grey'
-let g:better_whitespace_enabled=1
-let g:strip_whitespace_on_save=0
-let g:show_spaces_that_precede_tabs=1
-
 " coc settings
 "
 " if hidden is not set, TextEdit might fail.
@@ -350,11 +350,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "
 " End coc settings
-"
 
-syntax on   " enable syntax highlighting
-
-"
 " }}}
 "
 " Text Formatting {{{
@@ -362,7 +358,6 @@ syntax on   " enable syntax highlighting
 
 set encoding=utf-8
 
-filetype plugin indent on   " load filetype-specific indent files
 set wildmenu                " visual autocomplete for the command menu
 set lazyredraw              " redraw only when we need to.
 set foldenable              " enable folding
@@ -378,11 +373,10 @@ set modelines=1             " read a modeline on the last line of the file
 " Themes {{{
 "
 
-" configure colorscheme onedark
+" configure colorscheme nord
 " Color scheme has to be loaded after plugin initilization
-if !exists('g:not_finish_vimplug')
-    colorscheme nord
-endif
+silent! colorscheme nord
+silent! AirlineTheme nord
 
 " }}}
 "
