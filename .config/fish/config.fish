@@ -29,6 +29,8 @@ if status --is-interactive
     end
     if command -sq doas
         alias sudo='doas'
+    else if command -sq sudo
+        alias doas='sudo'
     end
     if command -sq neomutt
         alias mutt='neomutt'
