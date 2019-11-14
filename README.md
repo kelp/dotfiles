@@ -21,7 +21,7 @@ to exist on a computer, delete them in that computer's branch.
 
 To bootstrap on a new system:
 
-	curl -Lks https://git.io/fjB0R | bash
+	curl -Lks https://git.io/fjB0R | sh
 
 Generally we rebase branches, so need to be careful about which changes
 happen in those branches. 
