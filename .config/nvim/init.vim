@@ -91,6 +91,11 @@ let g:startify_fortune_use_unicode = 1  " Use utf-8
 let g:startify_change_to_dir = 1        " Change to dir of file
 let g:startify_change_to_vcs_root = 1   " Change to vcs dir of file
 
+augroup startify-init
+  " Enable cursorline in startify
+  autocmd User Startified setlocal cursorline
+augroup END
+
 " vim-better-whitespace config
 let g:better_whitespace_ctermcolor='grey'
 let g:better_whitespace_guicolor='grey'
