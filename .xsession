@@ -26,14 +26,14 @@ xset b off
 
 # if you have a ThinkPad, the following lines enable TrackPoint
 # scrolling by dragging with the middle button.
-xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation" 1 
-xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Button" 2 
+xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation" 1
+xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Button" 2
 # Apple Style Natural Scrolling
-xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 7 6 5 4 
+xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 7 6 5 4
 # Take 5 pixels of movement before we start scrolling. Defualt is 10
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Inertia" 5
 
-xset +fp /usr/local/share/fonts/NerdFonts
+#xset +fp /usr/local/share/fonts/NerdFonts
 xset fp rehash &
 
 # use caps lock as ctrl key
@@ -51,13 +51,13 @@ xbanish &
 # run slstatus bar
 slstatus &
 
-#xsetroot -cursor_name left_ptr
+xsetroot -cursor_name left_ptr
 
 # start some things I always run
 st &
 st &
 st &
-st & 
+st &
 firefox &
 
 # start dwm!
