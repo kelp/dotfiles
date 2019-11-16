@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd /sys/arch/amd64/compile/GENERIC.MP
+make obj
+make config
+make -j3
+doas make install
+
+echo "Done with kernel build, reboot now"

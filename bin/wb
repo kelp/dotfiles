@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "Get doas password cached"
+doas uname -a
+cd /usr/src
+make obj
+doas make -j3 build
+
+doas sysmerge
+cd /dev
+doas ./MAKEDEV all
