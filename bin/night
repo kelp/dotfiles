@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sct 4500
+doas wsconsctl display.brightness=35
