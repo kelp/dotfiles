@@ -29,6 +29,8 @@ if status --is-interactive
     end
     if command -sq doas
         alias sudo='doas'
+    else if command -sq sudo
+        alias doas='sudo'
     end
     if command -sq neomutt
         alias mutt='neomutt'
@@ -101,7 +103,12 @@ if status --is-interactive
         case OpenBSD
             alias ls='colorls -G'
             alias gpg='gpg2'
-            set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
+            # If we have a local reposync mirror use it.
+            if [ -d /home/cvs ]
+                set -x CVSROOT /home/cvs
+            else
+                set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
+            end
             # I prefer gnu dircolors, this gets close :/
             set -x LSCOLORS 'exgxfxdxcxegedabagacad'
             motd
