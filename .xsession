@@ -15,7 +15,8 @@ xrdb -merge $HOME/.Xresources
 xsetroot -solid black
 
 # xidle will lock your display after a period of inactivity
-xidle &
+XIDLE_FONT="-*-dejavu sans-*-r-*-*-18-*-*-*-*-*-*-*"
+xidle -program xlock -font $XIDLE_FONT -planfont $XIDLE_FONT
 
 # sadly, xclock has a bug where the font selection is ignored when UTF-8
 # is enabled, so we unset LANG here.
@@ -33,7 +34,7 @@ xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 7 6 5 4
 # Take 5 pixels of movement before we start scrolling. Defualt is 10
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Inertia" 5
 
-#xset +fp /usr/local/share/fonts/NerdFonts
+xset +fp $HOME/.local/share/fonts/NerdFonts
 xset fp rehash &
 
 # use caps lock as ctrl key
