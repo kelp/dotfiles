@@ -28,10 +28,10 @@ XLock.info        :
 XLock.background  : black
 XLock.foreground  : white
 XLock.mode        : blank
-XLock.username    : username:
+XLock.username    : user:
 XLock.password    : password:
-XLock.font        : -misc-fixed-medium-r-normal-*-15-*-*-*-*-*-iso10646-1
-XLock.planfont    : -misc-fixed-medium-r-normal-*-13-*-*-*-*-*-iso10646-1
+XLock.font        : -misc-fixed-medium-r-normal-*-17-*-*-*-*-*-iso10646-1
+XLock.planfont    : -misc-fixed-medium-r-normal-*-15-*-*-*-*-*-iso10646-1
 
 xterm*savelines: 16384
 xterm*ScrollBar: false
@@ -41,7 +41,7 @@ xterm*faceSize: 7
 xterm*faceName: DejaVu Sans Mono
 
 Xcursor.theme: Adwaita
-!Xcursor.size: 16
+Xcursor.size: 12
 
 ! Copyright (c) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
 ! Copyright (c) 2016-present Sven Greb <code@svengreb.de>
