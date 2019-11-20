@@ -276,7 +276,7 @@ Plug 'vim-airline/vim-airline'              " Powerline like bar
   Plug 'mhinz/vim-signify'                  " Show vcs changes per line
   Plug 'ryanoasis/vim-devicons'             " utf-8 icons for vim-airline
   Plug 'vim-airline/vim-airline-themes'     " Themes
-Plug 'yggdroot/indentline'      " Add a nice indent vertical indicator
+"Plug 'yggdroot/indentline'      " Add a nice indent vertical indicator
 
 " Finish
 " Required:
@@ -306,7 +306,14 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+" Cycle through completions with tab
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" Cycle back with shift tab
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Confirm confirm completion with return
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Confirm first completion on enter
+"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
