@@ -8,6 +8,8 @@ PREFIX=/usr/local
 #export XCURSOR_PATH="~/.icons:${PREFIX}/share/icons"
 #export XCURSOR_THEME="Adwaita"
 
+xrandr --dpi 221 &
+
 # load Xresources file
 xrdb -merge $HOME/.Xresources
 
