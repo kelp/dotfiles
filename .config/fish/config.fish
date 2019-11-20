@@ -35,6 +35,9 @@ if status --is-interactive
     if command -sq neomutt
         alias mutt='neomutt'
     end
+    if command -sq openrsync
+        alias rsync='openrsync'
+    end
 
     # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
     set -g theme_powerline_fonts yes
