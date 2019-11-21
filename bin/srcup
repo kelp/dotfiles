@@ -1,0 +1,11 @@
+#!/bin/ksh
+#
+# Script to keep source trees up to date. Run from cron.
+
+set -e
+
+SPLAY=$(($RANDOM % 1800))
+
+sleep $SPLAY
+(cd /usr/src && cvs -q up -P)
+(cd /usr/ports && cvs -q up -P)
