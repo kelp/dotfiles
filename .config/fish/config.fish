@@ -104,7 +104,7 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
-            alias ls='colorls -G'
+            alias ls='colorls -Gh'
             alias gpg='gpg2'
             # If we have a local reposync mirror use it.
             if [ -d /home/cvs ]
