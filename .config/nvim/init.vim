@@ -178,6 +178,9 @@ augroup END
 " Misc {{{
 "
 
+" Vimwiki
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+
 " Searching
 set hlsearch            " highlight all text matching current search pattern
 " Turn off search matches with space
