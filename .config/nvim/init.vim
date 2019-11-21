@@ -180,6 +180,7 @@ augroup END
 
 " Vimwiki
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
 
 " Searching
 set hlsearch            " highlight all text matching current search pattern
