@@ -272,11 +272,13 @@ Plug 'ninjin/vim-openbsd'       " OpenBSD style(8)
 Plug 'ntpeters/vim-better-whitespace'   " Highlight extra whitespace
 Plug 'sheerun/vim-polyglot'     " Syntax and indentation for many languages
 Plug 'thaerkh/vim-workspace'    " Automated workspace management
+Plug 'tpope/vim-fugitive'       " Git commands for vim
 Plug 'vim-airline/vim-airline'              " Powerline like bar
   Plug 'mhinz/vim-signify'                  " Show vcs changes per line
   Plug 'ryanoasis/vim-devicons'             " utf-8 icons for vim-airline
   Plug 'vim-airline/vim-airline-themes'     " Themes
-"Plug 'yggdroot/indentline'      " Add a nice indent vertical indicator
+Plug 'yggdroot/indentline'      " Add a nice indent vertical indicator
+Plug 'vimwiki/vimwiki'          " A personal vimwiki
 
 " Finish
 " Required:
