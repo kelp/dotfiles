@@ -8,7 +8,7 @@ PREFIX=/usr/local
 #export XCURSOR_PATH="~/.icons:${PREFIX}/share/icons"
 #export XCURSOR_THEME="Adwaita"
 
-xrandr --dpi 221 &
+xrandr --dpi 210 &
 
 # load Xresources file
 xrdb -merge $HOME/.Xresources
@@ -36,7 +36,7 @@ xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Axes" 7 6 5 4
 # Take 5 pixels of movement before we start scrolling. Defualt is 10
 xinput set-prop "/dev/wsmouse" "WS Pointer Wheel Emulation Inertia" 5
 
-xset +fp $HOME/.local/share/fonts/NerdFonts /usr/local/share/font/inconsolata
+xset +fp $HOME/.local/share/fonts/NerdFonts
 xset fp rehash &
 
 # use caps lock as ctrl key
