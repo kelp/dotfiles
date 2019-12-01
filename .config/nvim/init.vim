@@ -129,6 +129,13 @@ augroup initvim-go-setup
         \ softtabstop=4
   " Disable vim-go's autocompletion. Use coc's instead.
   let g:go_code_completion_enabled = 0
+  let g:go_metalinter_autosave = 1
+  let g:go_highlight_array_whitespace_error = 1
+  let g:go_highlight_space_tab_error = 1
+  let g:go_highlight_chan_whitespace_error = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_function_parameters = 1
+  let g:go_highlight_function_calls = 1
 augroup END
 
 " coc needs gopls for Go completion
