@@ -35,6 +35,9 @@ if status --is-interactive
     if command -sq neomutt
         alias mutt='neomutt'
     end
+    if command -sq openrsync
+        alias rsync='openrsync'
+    end
 
     # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
     set -g theme_powerline_fonts yes
@@ -101,7 +104,7 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
-            alias ls='colorls -G'
+            alias ls='colorls -Gh'
             alias gpg='gpg2'
             # If we have a local reposync mirror use it.
             if [ -d /home/cvs ]
