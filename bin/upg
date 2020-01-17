@@ -12,7 +12,7 @@ select reboot in y n;
 do
 	if [ $reboot = "y" ]; then
 		echo "Rebooting for upgrade"
-		#doas shutdown -r now
+		doas shutdown -r now
 		break
 	elif [ $reboot = "n" ]; then
 		echo "You should reboot later to finish the upgrade"
