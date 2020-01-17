@@ -104,6 +104,7 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
+            set -x MANPATH :$HOME/man
             alias ls='colorls -Gh'
             alias gpg='gpg2'
             # If we have a local reposync mirror use it.
@@ -143,3 +144,4 @@ alias pip="pip3"
 alias pydoc="pydoc3"
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
+alias vim='nvim'
