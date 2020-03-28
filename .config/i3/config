@@ -182,7 +182,7 @@ client.placeholder      #282C34 #282C34 #ABB2BF #282C34   #282C34
 client.background       #FFFFFF
 
 # start compton to prevent screen tearing
-exec --no-startup-id compton --config $HOME/.config/i3/compton.conf -b
+exec --no-startup-id picom --config $HOME/.config/i3/picom.conf -b
 
 # set a background wallpaper
 exec_always --no-startup-id feh --bg-max $HOME/.config/i3/the-great-wave.jpg
