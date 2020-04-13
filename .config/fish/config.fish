@@ -67,7 +67,7 @@ if status --is-interactive
     # if it exists, we'll cat it on interactive login shells.
     function motd
         if status is-interactive && status is-login
-            set MOTD $HOME/.config/motd/motd
+            set MOTD $HOME/.local/motd/motd
             if [ -f $MOTD ]
                 cat $MOTD
             end

@@ -4,8 +4,12 @@
 #
 
 set TMP (mktemp)
-set MOTD $HOME/.config/motd/motd
+set MOTD $HOME/.local/motd/motd
 set OS (uname -s)
+
+if [ ! -d $HOME/.local/motd ]
+    mkdir -p $HOME/.local/motd
+end
 
 neofetch >> $TMP
 
@@ -28,6 +32,6 @@ end
 echo "Last: " >> $TMP
 last -n 2 | grep -v wtmp | sed '/^$/d'  >> $TMP
 
-mv $TMP $HOME/.config/motd/motd
+mv $TMP $HOME/.local/motd/motd
 
 rm -f $TMP
