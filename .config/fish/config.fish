@@ -35,6 +35,9 @@ if status --is-interactive
     if command -sq neomutt
         alias mutt='neomutt'
     end
+    if command -sq openrsync
+        alias rsync='openrsync'
+    end
 
     # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
     set -g theme_powerline_fonts yes
@@ -88,6 +91,10 @@ if status --is-interactive
     set -x OS (uname -s)
 
     switch $OS
+        case Darwin
+            # Nothing here currently
+        case FreeBSD
+            # Nothing here currently
         case Linux
             if set -q DESKTOP_SESSION
                 set -gx SSH_AUTH_SOCK (gnome-keyring-daemon --start | \
@@ -101,7 +108,8 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
-            alias ls='colorls -G'
+            set -x MANPATH :$HOME/man
+            alias ls='colorls -Gh'
             alias gpg='gpg2'
             # If we have a local reposync mirror use it.
             if [ -d /home/cvs ]
@@ -112,8 +120,6 @@ if status --is-interactive
             # I prefer gnu dircolors, this gets close :/
             set -x LSCOLORS 'exgxfxdxcxegedabagacad'
             motd
-        case Darwin
-            # Nothing here currenlty
         case '*'
             echo "I don't know what OS this is"
     end
@@ -140,3 +146,4 @@ alias pip="pip3"
 alias pydoc="pydoc3"
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
+alias vim='nvim'

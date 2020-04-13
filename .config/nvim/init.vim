@@ -129,6 +129,13 @@ augroup initvim-go-setup
         \ softtabstop=4
   " Disable vim-go's autocompletion. Use coc's instead.
   let g:go_code_completion_enabled = 0
+  let g:go_metalinter_autosave = 1
+  let g:go_highlight_array_whitespace_error = 1
+  let g:go_highlight_space_tab_error = 1
+  let g:go_highlight_chan_whitespace_error = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_function_parameters = 1
+  let g:go_highlight_function_calls = 1
 augroup END
 
 " coc needs gopls for Go completion
@@ -177,6 +184,10 @@ augroup END
 "
 " Misc {{{
 "
+
+" Vimwiki
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
 
 " Searching
 set hlsearch            " highlight all text matching current search pattern
@@ -272,11 +283,13 @@ Plug 'ninjin/vim-openbsd'       " OpenBSD style(8)
 Plug 'ntpeters/vim-better-whitespace'   " Highlight extra whitespace
 Plug 'sheerun/vim-polyglot'     " Syntax and indentation for many languages
 Plug 'thaerkh/vim-workspace'    " Automated workspace management
+Plug 'tpope/vim-fugitive'       " Git commands for vim
 Plug 'vim-airline/vim-airline'              " Powerline like bar
   Plug 'mhinz/vim-signify'                  " Show vcs changes per line
   Plug 'ryanoasis/vim-devicons'             " utf-8 icons for vim-airline
   Plug 'vim-airline/vim-airline-themes'     " Themes
 Plug 'yggdroot/indentline'      " Add a nice indent vertical indicator
+Plug 'vimwiki/vimwiki'          " A personal vimwiki
 
 " Finish
 " Required:
@@ -306,7 +319,14 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+" Cycle through completions with tab
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" Cycle back with shift tab
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Confirm confirm completion with return
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Confirm first completion on enter
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
