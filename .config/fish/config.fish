@@ -91,6 +91,10 @@ if status --is-interactive
     set -x OS (uname -s)
 
     switch $OS
+        case Darwin
+            # Nothing here currently
+        case FreeBSD
+            # Nothing here currently
         case Linux
             if set -q DESKTOP_SESSION
                 set -gx SSH_AUTH_SOCK (gnome-keyring-daemon --start | \
@@ -116,8 +120,6 @@ if status --is-interactive
             # I prefer gnu dircolors, this gets close :/
             set -x LSCOLORS 'exgxfxdxcxegedabagacad'
             motd
-        case Darwin
-            # Nothing here currenlty
         case '*'
             echo "I don't know what OS this is"
     end
