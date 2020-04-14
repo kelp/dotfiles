@@ -4,7 +4,7 @@ export GDK_SCALE=1
 
 # Used by i3-sensible-terminal
 export TERMINAL=alacritty
-[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 #xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 xrandr --dpi 192
