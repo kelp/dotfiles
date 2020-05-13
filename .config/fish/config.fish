@@ -29,9 +29,14 @@ if status --is-interactive
     end
     if command -sq doas
         alias sudo='doas'
+    else if command -sq sudo
+        alias doas='sudo'
     end
     if command -sq neomutt
         alias mutt='neomutt'
+    end
+    if command -sq openrsync
+        alias rsync='openrsync'
     end
 
     # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
@@ -86,6 +91,10 @@ if status --is-interactive
     set -x OS (uname -s)
 
     switch $OS
+        case Darwin
+            # Nothing here currently
+        case FreeBSD
+            # Nothing here currently
         case Linux
             if set -q DESKTOP_SESSION
                 set -gx SSH_AUTH_SOCK (gnome-keyring-daemon --start | \
@@ -99,14 +108,18 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
-            alias ls='colorls -G'
+            set -x MANPATH :$HOME/man
+            alias ls='colorls -Gh'
             alias gpg='gpg2'
-            set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
+            # If we have a local reposync mirror use it.
+            if [ -d /home/cvs ]
+                set -x CVSROOT /home/cvs
+            else
+                set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
+            end
             # I prefer gnu dircolors, this gets close :/
             set -x LSCOLORS 'exgxfxdxcxegedabagacad'
             motd
-        case Darwin
-            # Nothing here curretly
         case '*'
             echo "I don't know what OS this is"
     end
@@ -133,3 +146,4 @@ alias pip="pip3"
 alias pydoc="pydoc3"
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
+alias vim='nvim'

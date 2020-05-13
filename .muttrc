@@ -3,7 +3,7 @@
 # Userconfig and other secrets
 source $HOME/.muttrc-secrets
 
-set from = "Travis Cole <kelp@plek.org>"
+set from = "Travis Cole <tc@tcole.net>"
 set my_server = "imap.fastmail.com"
 
 set folder = imaps://$my_server
@@ -27,10 +27,33 @@ auto_view text/html    # view html automatically
 alternative_order text/plain text/enriched text/html
 set mailcap_path = ~/.mailcap
 
+# Vi like keybindings from:
+# https://github.com/neomutt/neomutt/blob/master/contrib/vim-keys/vim-keys.rc
+#
+# Moving around
+bind attach,browser,index       g   noop
+bind attach,browser,index       gg  first-entry
+bind attach,browser,index       G   last-entry
+bind pager                      g  noop
+bind pager                      gg  top
+bind pager                      G   bottom
+bind pager                      k   previous-line
+bind pager                      j   next-line
+
+# Scrolling
+bind attach,browser,pager,index \CF next-page
+bind attach,browser,pager,index \CB previous-page
+bind attach,browser,pager,index \Cu half-up
+bind attach,browser,pager,index \Cd half-down
+bind browser,pager              \Ce next-line
+bind browser,pager              \Cy previous-line
+bind index                      \Ce next-line
+bind index                      \Cy previous-line
+
 bind editor <space> noop
 macro index,pager y "<save-message>$spoolfile/Archive<enter><enter>" "Archive"
 macro index,pager d "<save-message>$spoolfile/Trash<enter><enter>" "Trash"
-bind index g noop
+#bind index g noop
 macro index gi "<change-folder>$spoolfile/INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>$spoolfile/Archive<enter>" "Go to all mail"
 # Not sure yet what if any the Fastmail equivilent is
@@ -45,11 +68,11 @@ color markers	    brightred black
 color quoted	    green black
 color signature     cyan black
 color status	    brightgreen blue
-color tilde	        blue black
-color tree	        red black
+color tilde	    blue black
+color tree	    red black
 
-color index	        red black ~D
-color index	        magenta black ~T
+color index	    red black ~D
+color index	    magenta black ~T
 
 #color header	brightgreen black ^From:
 #color header	brightcyan black ^To:
@@ -62,4 +85,9 @@ color body	brightred black [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
 
 color body	brightblue black (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
 # identifies URLs
-#
+
+# Aliases
+alias stu Stuart Henderson <stu@spacehopper.org>
+alias edd Edd Barrett <edd@theunixzoo.co.uk>
+alias ports <ports@openbsd.org>
+alias tech <tech@openbsd.org>
