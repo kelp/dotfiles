@@ -143,3 +143,19 @@ alias pip="pip3"
 alias pydoc="pydoc3"
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
+
+# Convenience functions
+function onearg ()
+end
+
+function port ()
+    if test (count $argv -gt 1)
+        printf "%s\n" (_ "Too many args for port command")
+        return 1
+    end
+    cd /usr/ports/*/$argv || cd /usr/ports/*/*/$argv || return 1
+end
+
+function src ()
+    cd /usr/src/*/$argv || return
+end
