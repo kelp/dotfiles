@@ -153,7 +153,7 @@ let g:vim_markdown_conceal = 0  " Disable concealing
 
 " OpenBSD style(9)
 augroup initvim-openbsd
-  au BufRead,BufNewFile *.[ch]
+  au BufRead,BufNewFile *.[ch],*.cpp
     \  if getline(1) =~ 'OpenBSD:'
     \|   setl ft=c.openbsd
     \|	 call OpenBSD_Style()

@@ -91,6 +91,10 @@ if status --is-interactive
     set -x OS (uname -s)
 
     switch $OS
+        case Darwin
+            # Nothing here currently
+        case FreeBSD
+            # Nothing here currently
         case Linux
             if set -q DESKTOP_SESSION
                 set -gx SSH_AUTH_SOCK (gnome-keyring-daemon --start | \
@@ -104,6 +108,7 @@ if status --is-interactive
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
         case OpenBSD
+            set -x MANPATH :$HOME/man
             alias ls='colorls -Gh'
             alias gpg='gpg2'
             # If we have a local reposync mirror use it.
@@ -115,8 +120,6 @@ if status --is-interactive
             # I prefer gnu dircolors, this gets close :/
             set -x LSCOLORS 'exgxfxdxcxegedabagacad'
             motd
-        case Darwin
-            # Nothing here currenlty
         case '*'
             echo "I don't know what OS this is"
     end
@@ -143,3 +146,20 @@ alias pip="pip3"
 alias pydoc="pydoc3"
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
+alias vim='nvim'
+
+# Convenience functions
+function onearg ()
+end
+
+function port ()
+    if test (count $argv -gt 1)
+        printf "%s\n" (_ "Too many args for port command")
+        return 1
+    end
+    cd /usr/ports/*/$argv || cd /usr/ports/*/*/$argv || return 1
+end
+
+function src ()
+    cd /usr/src/*/$argv || return
+end

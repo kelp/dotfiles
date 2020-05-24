@@ -4,8 +4,7 @@
 
 set -e
 
-SPLAY=$(($RANDOM % 1800))
+echo "Updating src trees"
 
-sleep $SPLAY
 (cd /usr/src && cvs -q up -P)
 (cd /usr/ports && cvs -q up -P)
