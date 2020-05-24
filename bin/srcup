@@ -4,15 +4,7 @@
 
 set -e
 
-SLEEP=$1
-
-# Don't sleep if we get -n
-if [[ $SLEEP != '-n' ]]; then
-	SPLAY=$(($RANDOM % 1800))
-	sleep $SPLAY
-else
-	echo "Updating src trees"
-fi
+echo "Updating src trees"
 
 (cd /usr/src && cvs -q up -P)
 (cd /usr/ports && cvs -q up -P)
