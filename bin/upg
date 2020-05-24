@@ -1,0 +1,21 @@
+#!/bin/ksh
+#
+# handy script to upgrade and update all the things on an OpenBSD system
+
+echo "updating packages"
+doas pkg_add -Uu
+
+echo "updating the system"
+doas sysupgrade -sn
+
+select reboot in y n;
+do
+	if [ $reboot = "y" ]; then
+		echo "Rebooting for upgrade"
+		doas shutdown -r now
+		break
+	elif [ $reboot = "n" ]; then
+		echo "You should reboot later to finish the upgrade"
+		break
+	fi
+done
