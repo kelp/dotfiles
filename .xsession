@@ -56,6 +56,9 @@ slstatus &
 
 xsetroot -cursor_name left_ptr
 
+# Set the color temp to something nicer at night
+sctd &
+
 # start some things I always run
 st &
 st &
