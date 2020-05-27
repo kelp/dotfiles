@@ -87,10 +87,11 @@ if status --is-interactive
 
     switch $OS
         case Darwin
-            # Nothing here currently
             motd
         case FreeBSD
-            # Nothing here currently
+            set -x LSCOLORS 'exgxfxdxcxegedabagacad'
+            set -x CLICOLOR
+            alias ls='ls -hF'
             motd
         case Linux
             if set -q DESKTOP_SESSION
@@ -100,13 +101,17 @@ if status --is-interactive
             if [ -n "$SSH_CONNECTION" ]
                 set -x PINENTRY_USER_DATA "USE_CURSES=1"
             end
-            motd
             # Disable the systemd pager by default, I find it more
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
+            alias ls='ls -hF'
+            motd
         case OpenBSD
             set -x MANPATH :$HOME/man
-            alias ls='colorls -Gh'
+            # I prefer gnu dircolors, this gets close :/
+            set -x LSCOLORS 'exgxfxdxcxegedabagacad'
+            set -x CLICOLOR
+            alias ls='colorls -hF'
             alias gpg='gpg2'
             # If we have a local reposync mirror use it.
             if [ -d /home/cvs ]
@@ -114,8 +119,6 @@ if status --is-interactive
             else
                 set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
             end
-            # I prefer gnu dircolors, this gets close :/
-            set -x LSCOLORS 'exgxfxdxcxegedabagacad'
             motd
         case '*'
             echo "I don't know what OS this is"
