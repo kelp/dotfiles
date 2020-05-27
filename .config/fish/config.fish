@@ -79,8 +79,15 @@ if status --is-interactive
 
     # Setup keychain
     keychain --inherit any --agents ssh -q -Q
-    set keychain_conf "$HOME/.keychain/(uname -n)-fish"
-    test -e $keychain_conf && source $keychain_conf
+    if test -e $HOME/.ssh/id_rsa
+        keychain -q $HOME/.ssh/id_rsa
+    end
+    set keychain_conf $HOME/.keychain/(uname -n)-fish
+    if test -e $keychain_conf
+        source $keychain_conf
+    else
+        echo "Can't find $keychain_conf, not sourcing"
+    end
 
     # If we're inside tmux
     if set -q TMUX
