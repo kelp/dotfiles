@@ -22,7 +22,8 @@ switch $OS
                 # do nothing so far
          end
     case OpenBSD
-        # nothing special yet
+        echo "Package updates: " >> $$TMP
+        pkg_add -snuI | grep -v quirks >> $TMP
 end
 
 echo "Last: " >> $TMP
