@@ -77,18 +77,6 @@ if status --is-interactive
         end
     end
 
-    # Setup keychain
-    keychain --inherit any --agents ssh -q -Q
-    if test -e $HOME/.ssh/id_rsa
-        keychain -q $HOME/.ssh/id_rsa
-    end
-    set keychain_conf $HOME/.keychain/(uname -n)-fish
-    if test -e $keychain_conf
-        source $keychain_conf
-    else
-        echo "Can't find $keychain_conf, not sourcing"
-    end
-
     # If we're inside tmux
     if set -q TMUX
         set -x SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
@@ -100,8 +88,10 @@ if status --is-interactive
     switch $OS
         case Darwin
             # Nothing here currently
+            motd
         case FreeBSD
             # Nothing here currently
+            motd
         case Linux
             if set -q DESKTOP_SESSION
                 set -gx SSH_AUTH_SOCK (gnome-keyring-daemon --start | \
