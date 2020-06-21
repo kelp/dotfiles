@@ -22,8 +22,8 @@ switch $OS
                 # do nothing so far
          end
     case OpenBSD
-        echo "Package updates: " >> $$TMP
-        pkg_add -snuI | grep -v quirks >> $TMP
+        echo "Package updates: " >> $TMP
+        pkg_add -snuI | egrep -v '(quirks|highwater)' &>> $TMP
 end
 
 echo "Last: " >> $TMP
