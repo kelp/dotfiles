@@ -18,8 +18,7 @@ freebsd_upgrade() {
 	sudo pkg upgrade
 
 	echo "updating FreeBSD"
-	sudo freebsd-update fetch
-	sudo freebsd-update install
+	sudo freebsd-update fetch install
 }
 
 debian_upgrade() {
