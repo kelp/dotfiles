@@ -8,7 +8,7 @@ function dot {
    git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
 mkdir -p .dotfiles-backup
-dot checkout
+dot checkout -f
 if [ $? = 0 ]; then
   echo "Checked out dotfiles.";
   else
