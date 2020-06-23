@@ -2,7 +2,7 @@
 #
 # handy script to upgrade and update all the things on various systems
 
-opebsd_upgrade()
+openbsd_upgrade()
 {
 	echo "updating packages"
 	doas pkg_add -Uu
