@@ -1,21 +1,61 @@
-#!/bin/ksh
+#!/bin/sh
 #
-# handy script to upgrade and update all the things on an OpenBSD system
+# handy script to upgrade and update all the things on various systems
 
-echo "updating packages"
-doas pkg_add -Uu
+openbsd_upgrade()
+{
+	echo "updating packages"
+	doas pkg_add -Uu
 
-echo "updating the system"
-doas sysupgrade -sn
+	echo "updating the system to the latest snapshot"
+	doas sysupgrade -sn
 
-select reboot in y n;
-do
-	if [ $reboot = "y" ]; then
-		echo "Rebooting for upgrade"
-		doas shutdown -r now
-		break
-	elif [ $reboot = "n" ]; then
-		echo "You should reboot later to finish the upgrade"
-		break
-	fi
-done
+	echo "Reboot now to complete your upgrade"
+}
+
+freebsd_upgrade() {
+	echo "updating packages"
+	sudo pkg upgrade
+
+	echo "updating FreeBSD"
+	sudo freebsd-update fetch install
+}
+
+debian_upgrade() {
+	echo "updating packages"
+	sudo apt-get update
+	sudo apt-get upgrade
+}
+
+arch_upgrade() {
+	echo "updating packages"
+	sudo pacman -Syu
+}
+
+OS=$(uname -s)
+
+case $OS in
+	OpenBSD)
+		openbsd_upgrade
+		;;
+	FreeBSD)
+		freebsd_upgrade
+		;;
+	Linux)
+		DIST=$(lsb_release -si)
+		case $DIST in
+			Debian)
+				debian_upgrade
+				;;
+			Arch)
+				arch_upgrade
+				;;
+			*)
+				echo "I don't know how to upgrade $DIST"
+				;;
+		esac
+		;;
+	*)
+		echo "I don't know how to upgrade $OS"
+		;;
+esac
