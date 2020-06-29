@@ -104,7 +104,7 @@ if status --is-interactive
             # Disable the systemd pager by default, I find it more
             # irritating than helpful.
             set -x SYSTEMD_PAGER ''
-            alias ls='ls -hF'
+            alias ls='ls -hF --color'
             motd
         case OpenBSD
             set -x MANPATH :$HOME/man
