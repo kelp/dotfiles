@@ -3,6 +3,8 @@ export LANG="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 export ENV=$HOME/.kshrc
 
+export MOZ_ACCELERATED=1
+
 PREFIX=/usr/local
 
 #export XCURSOR_PATH="~/.icons:${PREFIX}/share/icons"
@@ -12,6 +14,8 @@ xrandr --dpi 210 &
 
 # load Xresources file
 xrdb -merge $HOME/.Xresources
+
+compton -b --focus-exclude "x = 0 && y = 0 && override_redirect = true"
 
 # set your background color
 xsetroot -solid black

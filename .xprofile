@@ -1,6 +1,7 @@
 xbindkeys
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GDK_SCALE=1
+export MOZ_ACCELERATED=1
 
 # Used by i3-sensible-terminal
 export TERMINAL=st
