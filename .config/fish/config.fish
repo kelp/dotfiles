@@ -117,7 +117,7 @@ if status --is-interactive
             if [ -d /home/cvs ]
                 set -x CVSROOT /home/cvs
             else
-                set -x CVSROOT anoncvs@anoncvs4.usa.openbsd.org:/cvs
+                set -x CVSROOT two.plek.org:/home/cvs
             end
             motd
         case '*'
