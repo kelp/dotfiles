@@ -3,7 +3,7 @@ export LANG="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 export ENV=$HOME/.kshrc
 
-export MOZ_ACCELERATED=1
+export MOZ_ACCELERATED=1 MOZ_WEBRENDER=1
 
 PREFIX=/usr/local
 
