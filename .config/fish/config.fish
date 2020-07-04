@@ -45,7 +45,7 @@ if status --is-interactive
     set -g theme_display_user ssh
     set -g theme_display_hostname ssh
     set -g theme_show_exit_status yes
-    set -g theme_color_scheme dark
+    set -g theme_color_scheme nord
     set -g fish_prompt_pwd_dir_length 4
     set -g theme_project_dir_length 1
     set -g theme_newline_cursor no
@@ -54,6 +54,8 @@ if status --is-interactive
     set -g theme_title_display_path yes
     set -g theme_title_display_user no
     set -g theme_title_use_abbreviated_path no
+    set -g theme_display_vi yes
+    set -g theme_date_time_zone America/Los_Angeles
     # Huge repos make this feature super slow
     set -g theme_vcs_ignore_paths $HOME/src/openbsd $HOME/src/linux \
         $HOME/src/freebsd
