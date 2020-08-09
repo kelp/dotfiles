@@ -11,3 +11,5 @@ make update-plist
 make port-lib-depends-check
 
 /usr/ports/infrastructure/bin/portcheck
+
+make test
