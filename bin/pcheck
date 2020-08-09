@@ -1,0 +1,15 @@
+#!/bin/ksh
+#
+# Handy script for sanity checking OpenBSD ports.
+
+set -e
+
+echo "Running port checks on $PWD"
+
+make update-plist
+
+make port-lib-depends-check
+
+/usr/ports/infrastructure/bin/portcheck
+
+make test

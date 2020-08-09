@@ -4,7 +4,8 @@
 
 set -e
 
-echo "Updating src trees"
-
+echo "Updating src tree"
 (cd /usr/src && cvs -q up -P)
+
+echo "Updating ports tree"
 (cd /usr/ports && cvs -q up -P)
