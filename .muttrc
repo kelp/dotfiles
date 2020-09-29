@@ -3,7 +3,7 @@
 # Userconfig and other secrets
 source $HOME/.muttrc-secrets
 
-set from = "Travis Cole <tc@tcole.net>"
+set from = "Travis Cole <kelp@plek.org>"
 set my_server = "imap.fastmail.com"
 
 set folder = imaps://$my_server

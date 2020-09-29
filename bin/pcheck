@@ -7,6 +7,7 @@ set -e
 echo "Running port checks on $PWD"
 
 make update-plist
+make update-patches
 
 make port-lib-depends-check
 
