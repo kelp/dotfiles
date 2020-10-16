@@ -29,7 +29,11 @@ debian_upgrade() {
 
 arch_upgrade() {
 	echo "updating packages"
-	sudo pacman -Syu
+	if yay -v &> /dev/null; then
+		yay
+	else
+		sudo pacman -Syu
+	fi
 }
 
 OS=$(uname -s)
