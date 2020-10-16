@@ -24,7 +24,8 @@ freebsd_upgrade() {
 debian_upgrade() {
 	echo "updating packages"
 	sudo apt-get update
-	sudo apt-get upgrade
+	sudo apt-get dist-upgrade
+	sudo apt-get autoremove
 }
 
 arch_upgrade() {
