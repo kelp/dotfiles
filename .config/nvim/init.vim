@@ -170,6 +170,9 @@ augroup END
 " enable python virtualenv support in airline
 let g:airline#extensions#virtualenv#enabled = 1
 
+" Rust
+let g:rustfmt_autosave = 1
+
 " Terraform
 let g:terraform_align = 1           " Use vim-terraform indents
 let g:terraform_fold_sections = 1   " Auto fold terraform
@@ -281,6 +284,7 @@ Plug 'mhinz/vim-startify'       " Creates a nice default start screen
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of Completion
 Plug 'ninjin/vim-openbsd'       " OpenBSD style(8)
 Plug 'ntpeters/vim-better-whitespace'   " Highlight extra whitespace
+Plug 'rust-lang/rust.vim'       " Rust support
 Plug 'sheerun/vim-polyglot'     " Syntax and indentation for many languages
 Plug 'thaerkh/vim-workspace'    " Automated workspace management
 Plug 'tpope/vim-fugitive'       " Git commands for vim
