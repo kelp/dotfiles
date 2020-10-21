@@ -2,5 +2,4 @@
 #
 # sh/ksh initialization
 
-export ENV="$HOME/.kshrc" 
-
+export ENV="$HOME/.kshrc"
