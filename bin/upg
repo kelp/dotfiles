@@ -35,6 +35,11 @@ arch_upgrade() {
 	else
 		sudo pacman -Syu
 	fi
+	# clean up unused packages
+	if CLEAN=$(pacman -Qdtq); then
+		echo "cleaning unused packages"
+		sudo pacman -Rcns $(pacman -Qdtq)
+	fi
 }
 
 OS=$(uname -s)
