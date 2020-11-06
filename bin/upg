@@ -35,6 +35,10 @@ arch_upgrade() {
 	else
 		sudo pacman -Syu
 	fi
+	if flatpak --help &> /dev/null; then
+		echo "updating flatpak"
+		flatpak upgrade
+	fi
 	# clean up unused packages
 	if CLEAN=$(pacman -Qdtq); then
 		echo "cleaning unused packages"
