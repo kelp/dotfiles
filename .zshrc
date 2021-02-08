@@ -63,17 +63,13 @@ linux_config(){
         LESS_TERMCAP_us=$'\e[01;32m' \
         command man "$@"
     }
-    # https://github.com/andsens/homeshick
-    export HOMESHICK_DIR=$HOME/.homesick/repos/homeshick
-    source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-    fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
     # Gnome Keyring to load ssh-agent
     if [ -n "$DESKTOP_SESSION" ];then
         eval $(gnome-keyring-daemon --start)
         export SSH_AUTH_SOCK
-        export GPG_TTY=$(tty)
-        gpg-connect-agent updatestartuptty /bye > /dev/null
+        #export GPG_TTY=$(tty)
+        #gpg-connect-agent updatestartuptty /bye > /dev/null
     fi
 }
 
@@ -91,13 +87,9 @@ UNIVERSAL_PLUGINS='command-not-found docker extract gem git git-extras github go
 case "$OS" in
   Darwin)
     plugins=($UNIVERSAL_PLUGINS brew osx)
-    # https://github.com/andsens/homeshick
-    # installed with homebrew on macOS
-    export HOMESHICK_DIR=/usr/local/opt/homeshick
-    source "/usr/local/opt/homeshick/homeshick.sh"
     fpath=(/usr/local/share/zsh/site-functions $fpath)
-    export GPG_TTY=$(tty)
-    gpg-connect-agent updatestartuptty /bye > /dev/null
+    #export GPG_TTY=$(tty)
+    #gpg-connect-agent updatestartuptty /bye > /dev/null
     ;;
   'Arch Linux')
     plugins=($UNIVERSAL_PLUGINS archlinux gnu-utils systemd)
@@ -109,10 +101,6 @@ case "$OS" in
     ;;
   OpenBSD)
     plugins=($UNIVERSAL_PLUGINS gnu-utils)
-    # https://github.com/andsens/homeshick
-    export HOMESHICK_DIR=$HOME/.homesick/repos/homeshick
-    source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-    fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
     alias pip='pip3.6'
     ;;
 esac
@@ -120,7 +108,9 @@ esac
 # Enable vi mode
 # bindkey -v
 
-source $ZSH/oh-my-zsh.sh
+if [ -f $ZSH/oh-my-zsh.sh ]; then
+	source $ZSH/oh-my-zsh.sh
+fi
 
 # configure powerlevel9k prompt
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2

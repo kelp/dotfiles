@@ -11,7 +11,7 @@ neofetch >> $TMP
 
 switch $OS
     case Linux
-        set DIST = (lsb_release -si)
+        set DIST (lsb_release -si)
         switch $DIST
             case Arch
                 echo "Updates: " >> $TMP
