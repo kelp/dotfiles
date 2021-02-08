@@ -23,7 +23,7 @@ switch $OS
          end
     case OpenBSD
         echo "Package updates: " >> $TMP
-        pkg_add -snuI | egrep -v '(quirks|highwater)' &>> $TMP
+        pkg_add -snuI | egrep -v '(quirks|highwater|tarsnap)' &>> $TMP
 end
 
 echo "Last: " >> $TMP
