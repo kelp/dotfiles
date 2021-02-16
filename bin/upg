@@ -8,7 +8,7 @@ openbsd_upgrade()
 	doas pkg_add -Uu
 
 	echo "updating the system to the latest snapshot"
-	doas sysupgrade -sn
+	doas sysupgrade -sn || echo "Upgrade failed" && exit 1
 
 	echo "Reboot now to complete your upgrade"
 }
