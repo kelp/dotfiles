@@ -10,6 +10,7 @@ openbsd_upgrade()
 	echo "updating the system to the latest snapshot"
 	doas sysupgrade -sn
 
+	$HOME/.config/motd/motd.fish
 	echo "Reboot now to complete your upgrade"
 }
 
@@ -19,6 +20,7 @@ freebsd_upgrade() {
 
 	echo "updating FreeBSD"
 	sudo freebsd-update fetch install
+	$HOME/.config/motd/motd.fish
 }
 
 debian_upgrade() {
@@ -26,6 +28,7 @@ debian_upgrade() {
 	sudo apt-get update
 	sudo apt-get dist-upgrade
 	sudo apt-get autoremove
+	$HOME/.config/motd/motd.fish
 }
 
 arch_upgrade() {
@@ -35,6 +38,7 @@ arch_upgrade() {
 	else
 		sudo pacman -Syu
 	fi
+	$HOME/.config/motd/motd.fish
 }
 
 OS=$(uname -s)
