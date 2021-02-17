@@ -140,7 +140,7 @@ end
 # Global configs for interactive and non-interactive shells
 
 set -x PATH $HOME/bin $HOME/.node_modules/bin $HOME/go/bin /usr/local/sbin \
-    $HOME/.cargo/bin $PATH
+    $HOME/.cargo/bin /opt/homebrew/bin /opt/homebrew/sbin $PATH
 
 # Global aliases
 alias python="python3"
