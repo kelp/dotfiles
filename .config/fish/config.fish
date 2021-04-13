@@ -22,23 +22,6 @@ if status --is-interactive
         set -x COLORTERM truecolor
     end
 
-    # Aliases
-    if command -sq nvim
-        alias vi='nvim'
-        alias view='nvim -R'
-    end
-    if command -sq doas
-        alias sudo='doas'
-    else if command -sq sudo
-        alias doas='sudo'
-    end
-    if command -sq neomutt
-        alias mutt='neomutt'
-    end
-    if command -sq openrsync
-        alias rsync='openrsync'
-    end
-
     # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
     set -g theme_powerline_fonts yes
     set -g theme_nerd_fonts yes
@@ -140,7 +123,7 @@ end
 # Global configs for interactive and non-interactive shells
 
 set -x PATH $HOME/bin $HOME/.node_modules/bin $HOME/go/bin /usr/local/sbin \
-    $HOME/.cargo/bin $PATH
+    $HOME/.cargo/bin /opt/homebrew/bin /opt/homebrew/sbin $PATH
 
 # Global aliases
 alias python="python3"
@@ -149,6 +132,22 @@ alias pydoc="pydoc3"
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
 alias vim='nvim'
+
+if command -sq nvim
+alias vi='nvim'
+alias view='nvim -R'
+end
+if command -sq doas
+alias sudo='doas'
+else if command -sq sudo
+alias doas='sudo'
+end
+if command -sq neomutt
+alias mutt='neomutt'
+end
+if command -sq openrsync
+alias rsync='openrsync'
+end
 
 # Convenience functions
 function onearg ()

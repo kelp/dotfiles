@@ -7,7 +7,12 @@ set TMP (mktemp)
 set MOTD $HOME/.config/motd/motd
 set OS (uname -s)
 
-neofetch >> $TMP
+if which neofetch > /dev/null
+	neofetch >> $TMP
+else
+	echo "neofetch not installed"
+	exit 1
+end
 
 switch $OS
     case Linux
