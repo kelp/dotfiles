@@ -2,6 +2,37 @@
 #
 # handy script to upgrade and update all the things on various systems
 
+arch_upgrade() {
+	echo "updating packages"
+	if yay -v &> /dev/null; then
+		yay
+	else
+		sudo pacman -Syu
+	fi
+	$HOME/.config/motd/motd.fish
+}
+
+darwin_upgrade() {
+	softwareupdate -ia
+}
+
+debian_upgrade() {
+	echo "updating packages"
+	sudo apt-get update
+	sudo apt-get dist-upgrade
+	sudo apt-get autoremove
+	$HOME/.config/motd/motd.fish
+}
+
+freebsd_upgrade() {
+	echo "updating packages"
+	sudo pkg upgrade
+
+	echo "updating FreeBSD"
+	sudo freebsd-update fetch install
+	$HOME/.config/motd/motd.fish
+}
+
 openbsd_upgrade()
 {
 	echo "updating packages"
@@ -14,33 +45,6 @@ openbsd_upgrade()
 	echo "Reboot now to complete your upgrade"
 }
 
-freebsd_upgrade() {
-	echo "updating packages"
-	sudo pkg upgrade
-
-	echo "updating FreeBSD"
-	sudo freebsd-update fetch install
-	$HOME/.config/motd/motd.fish
-}
-
-debian_upgrade() {
-	echo "updating packages"
-	sudo apt-get update
-	sudo apt-get dist-upgrade
-	sudo apt-get autoremove
-	$HOME/.config/motd/motd.fish
-}
-
-arch_upgrade() {
-	echo "updating packages"
-	if yay -v &> /dev/null; then
-		yay
-	else
-		sudo pacman -Syu
-	fi
-	$HOME/.config/motd/motd.fish
-}
-
 pi_upgrade() { 
 	debian_upgrade
 	if [ -x /usr/local/bin/pihole ] ; then
@@ -51,8 +55,8 @@ pi_upgrade() {
 OS=$(uname -s)
 
 case $OS in
-	OpenBSD)
-		openbsd_upgrade
+	Darwin)
+		darwin_upgrade
 		;;
 	FreeBSD)
 		freebsd_upgrade
@@ -60,18 +64,21 @@ case $OS in
 	Linux)
 		DIST=$(lsb_release -si)
 		case $DIST in
+			Arch)
+				arch_upgrade
+				;;
 			Debian)
 				debian_upgrade
 				;;
 			Raspbian)
 				pi_upgrade
 				;;
-			Arch)
-				arch_upgrade
-				;;
 			*)
 				echo "I don't know how to upgrade $DIST"
 				;;
+	OpenBSD)
+		openbsd_upgrade
+		;;
 		esac
 		;;
 	*)
