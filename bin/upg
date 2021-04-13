@@ -41,6 +41,13 @@ arch_upgrade() {
 	$HOME/.config/motd/motd.fish
 }
 
+pi_upgrade() { 
+	debian_upgrade
+	if [ -x /usr/local/bin/pihole ] ; then
+		pihole -g -up
+	fi
+}
+
 OS=$(uname -s)
 
 case $OS in
@@ -55,6 +62,9 @@ case $OS in
 		case $DIST in
 			Debian)
 				debian_upgrade
+				;;
+			Raspbian)
+				pi_upgrade
 				;;
 			Arch)
 				arch_upgrade
