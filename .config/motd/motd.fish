@@ -7,6 +7,10 @@ set TMP (mktemp)
 set MOTD $HOME/.config/motd/motd
 set OS (uname -s)
 
+if [ ! -d $HOME/.local/motd ]
+    mkdir -p $HOME/.local/motd
+end
+
 if which neofetch > /dev/null
 	neofetch >> $TMP
 else
