@@ -25,6 +25,9 @@ debian_upgrade() {
 }
 
 freebsd_upgrade() {
+	echo "Current / Latest Version:"
+	freebsd-version -k -u
+
 	echo "updating packages"
 	sudo pkg upgrade
 
