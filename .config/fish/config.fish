@@ -73,6 +73,14 @@ if status --is-interactive
     switch $OS
         case Darwin
             motd
+			set -x PATH	/opt/homebrew/bin /opt/homebrew/sbin $PATH
+
+			if test -d (brew --prefix)"/share/fish/completions"
+				set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
+			end
+			if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+				set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+			end
         case FreeBSD
             set -x LSCOLORS 'exgxfxdxcxegedabagacad'
             set -x CLICOLOR
@@ -122,8 +130,8 @@ end
 
 # Global configs for interactive and non-interactive shells
 
-set -x PATH $HOME/bin $HOME/.node_modules/bin $HOME/go/bin /usr/local/sbin \
-    $HOME/.cargo/bin /opt/homebrew/bin /opt/homebrew/sbin $PATH
+set -x PATH $HOME/bin $HOME/.node_modules/bin $HOME/go/bin \
+	/usr/local/sbin $HOME/.cargo/bin $PATH
 
 # Global aliases
 alias python="python3"

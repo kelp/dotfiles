@@ -13,7 +13,7 @@ arch_upgrade() {
 }
 
 darwin_upgrade() {
-	softwareupdate -ia
+	sudo softwareupdate -iaR
 }
 
 debian_upgrade() {
