@@ -14,6 +14,8 @@ arch_upgrade() {
 
 darwin_upgrade() {
 	sudo softwareupdate -iaR
+	brew update
+	brew upgrade
 }
 
 debian_upgrade() {
