@@ -16,6 +16,8 @@ darwin_upgrade() {
 	sudo softwareupdate -iaR
 	brew update
 	brew upgrade
+	rustup self update
+	rustup update
 }
 
 debian_upgrade() {
