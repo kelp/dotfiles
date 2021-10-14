@@ -3,3 +3,4 @@
 # sh/ksh initialization
 
 export ENV="$HOME/.kshrc" 
+source "$HOME/.cargo/env"

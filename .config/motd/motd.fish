@@ -7,11 +7,20 @@ set TMP (mktemp)
 set MOTD $HOME/.config/motd/motd
 set OS (uname -s)
 
-neofetch >> $TMP
+if [ ! -d $HOME/.local/motd ]
+    mkdir -p $HOME/.local/motd
+end
+
+if which neofetch > /dev/null
+	neofetch >> $TMP
+else
+	echo "neofetch not installed"
+	exit 1
+end
 
 switch $OS
     case Linux
-        set DIST = (lsb_release -si)
+        set DIST (lsb_release -si)
         switch $DIST
             case Arch
                 echo "Updates: " >> $TMP
@@ -23,7 +32,7 @@ switch $OS
          end
     case OpenBSD
         echo "Package updates: " >> $TMP
-        pkg_add -snuI | egrep -v '(quirks|highwater)' &>> $TMP
+        pkg_add -snuI | egrep -v '(quirks|highwater)' >> $TMP
 end
 
 echo "Last: " >> $TMP
