@@ -46,13 +46,13 @@ openbsd_upgrade()
 	doas pkg_add -Uu
 
 	echo "updating the system to the latest snapshot"
-	doas sysupgrade -sn
+	doas sysupgrade -sn || echo "Upgrade failed" && exit 1
 
 	$HOME/.config/motd/motd.fish
 	echo "Reboot now to complete your upgrade"
 }
 
-pi_upgrade() { 
+pi_upgrade() {
 	debian_upgrade
 	if [ -x /usr/local/bin/pihole ] ; then
 		pihole -g -up
@@ -83,10 +83,10 @@ case $OS in
 			*)
 				echo "I don't know how to upgrade $DIST"
 				;;
+		esac
+		;;
 	OpenBSD)
 		openbsd_upgrade
-		;;
-		esac
 		;;
 	*)
 		echo "I don't know how to upgrade $OS"
