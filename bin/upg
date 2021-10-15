@@ -52,7 +52,7 @@ openbsd_upgrade()
 	echo "Reboot now to complete your upgrade"
 }
 
-pi_upgrade() { 
+pi_upgrade() {
 	debian_upgrade
 	if [ -x /usr/local/bin/pihole ] ; then
 		pihole -g -up
