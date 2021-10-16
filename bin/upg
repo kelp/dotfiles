@@ -42,11 +42,21 @@ freebsd_upgrade() {
 
 openbsd_upgrade()
 {
+	# Check if we're on a release or a snapshot. Exit status will be 1
+	# if running a snapshot.
+	syspatch -l 2> /dev/null
+	RELEASE=$?
+
 	echo "updating packages"
 	doas pkg_add -Uu
 
-	echo "updating the system to the latest or release"
-	doas sysupgrade -n || echo "Upgrade failed" && exit 1
+	if [ $RELEASE ]; then
+		echo "Applying latests syspatches or upgrade"
+		doas sysupgrade 2> /dev/null || doas syspatch
+	else
+		echo "updating the system to the latest snapshot"
+		doas sysupgrade -n || echo "Upgrade failed" && exit 1
+	fi
 
 	$HOME/.config/motd/motd.fish
 	echo "Reboot now to complete your upgrade"
