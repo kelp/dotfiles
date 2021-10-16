@@ -45,8 +45,8 @@ openbsd_upgrade()
 	echo "updating packages"
 	doas pkg_add -Uu
 
-	echo "updating the system to the latest snapshot"
-	doas sysupgrade -sn || echo "Upgrade failed" && exit 1
+	echo "updating the system to the latest or release"
+	doas sysupgrade -n || echo "Upgrade failed" && exit 1
 
 	$HOME/.config/motd/motd.fish
 	echo "Reboot now to complete your upgrade"
