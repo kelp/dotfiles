@@ -26,3 +26,4 @@ case "$(uname)" in
   *)
 esac
 source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"

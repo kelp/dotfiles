@@ -4,4 +4,4 @@
 
 export ENV="$HOME/.kshrc" 
 
-source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
