@@ -142,25 +142,22 @@ alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
 alias vim='nvim'
 
 if command -sq nvim
-alias vi='nvim'
-alias view='nvim -R'
+    alias vi='nvim'
+    alias view='nvim -R'
 end
 if command -sq doas
-alias sudo='doas'
+    alias sudo='doas'
 else if command -sq sudo
-alias doas='sudo'
+    alias doas='sudo'
 end
 if command -sq neomutt
-alias mutt='neomutt'
+    alias mutt='neomutt'
 end
 if command -sq openrsync
-alias rsync='openrsync'
+    alias rsync='openrsync'
 end
 
-# Convenience functions
-function onearg ()
-end
-
+# Convenience functions for OpenBSD and FreeBSd
 function port ()
     if test (count $argv -gt 1)
         printf "%s\n" (_ "Too many args for port command")
