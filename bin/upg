@@ -52,7 +52,7 @@ openbsd_upgrade()
 
 	if [ $RELEASE ]; then
 		echo "Applying latests syspatches or upgrade"
-		doas sysupgrade 2> /dev/null || doas syspatch
+		doas sysupgrade -nr 2> /dev/null || doas syspatch
 	else
 		echo "updating the system to the latest snapshot"
 		doas sysupgrade -n || echo "Upgrade failed" && exit 1
