@@ -50,7 +50,7 @@ openbsd_upgrade()
 	echo "updating packages"
 	doas pkg_add -Uu
 
-	if [ $RELEASE ]; then
+	if [ $RELEASE = 0 ]; then
 		echo "Applying latests syspatches or upgrade"
 		doas sysupgrade -nr 2> /dev/null || doas syspatch
 	else
