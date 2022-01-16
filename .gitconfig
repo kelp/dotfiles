@@ -9,3 +9,8 @@
 	gpgsign = false
 #[url "ssh://git@github.com/"]
 #	insteadOf = https://github.com/
+[core]
+	autocrlf = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

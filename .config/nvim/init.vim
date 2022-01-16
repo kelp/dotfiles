@@ -56,7 +56,7 @@ let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long',
       \ 'mixed-indent-file', 'conflicts' ]
 
 " Enable coc extension
-let g:airline#extensions#coc#enabled = 1
+" let g:airline#extensions#coc#enabled = 1
 
 set laststatus=2
 
@@ -268,6 +268,7 @@ call plug#begin()
 "
 " {{{ Plugins
 "
+"
 
 " Install plugins
 
@@ -278,7 +279,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }  " Go support
 Plug 'hashivim/vim-terraform'   " Terraform support for vim
 Plug 'junegunn/vim-plug'        " For :help plug
 Plug 'mhinz/vim-startify'       " Creates a nice default start screen
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of Completion
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of Completion
 Plug 'neovim/nvim-lspconfig'    " neovim LSP Config
 Plug 'ninjin/vim-openbsd'       " OpenBSD style(8)
 Plug 'ntpeters/vim-better-whitespace'   " Highlight extra whitespace

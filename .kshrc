@@ -69,14 +69,15 @@ fi
 PS1="${grey_bg}${bright_blue}${ssh_prompt} \w $reset$grey_fg$prompt$reset "
 
 alias df='df -h'
-alias du='du -h'
-alias ls='colorls -GF'
-alias view='nvim -R'
-alias vi=nvim
 alias dot='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dotls='dot ls-tree --full-tree -r --name-only HEAD'
-alias mutt='neomutt'
+alias du='du -h'
 alias gpg='gpg2'
+alias ls='colorls -GF'
+alias mutt='neomutt'
+alias sudo='doas'
+alias vi=nvim
+alias view='nvim -R'
 
 # TODO make this do something nicer
 cd() { command cd "$@"; echo -ne "\033]0;${PWD##*/}\007"; }

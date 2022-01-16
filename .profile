@@ -2,5 +2,6 @@
 #
 # sh/ksh initialization
 
-export ENV="$HOME/.kshrc"
-source "$HOME/.cargo/env"
+export ENV="$HOME/.kshrc" 
+
+[[ -f $HOME/.cargo/env ]] && . "$HOME/.cargo/env"

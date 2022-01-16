@@ -82,7 +82,6 @@ if status --is-interactive
 				set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
 			end
         case FreeBSD
-            set -x LSCOLORS 'exgxfxdxcxegedabagacad'
             set -x CLICOLOR
             alias ls='ls -hF'
             motd
@@ -102,7 +101,6 @@ if status --is-interactive
         case OpenBSD
             set -x MANPATH :$HOME/man
             # I prefer gnu dircolors, this gets close :/
-            set -x LSCOLORS 'exgxfxdxcxegedabagacad'
             set -x CLICOLOR
             alias ls='colorls -hF'
             alias gpg='gpg2'
@@ -132,6 +130,8 @@ end
 
 set -x PATH $HOME/bin $HOME/.node_modules/bin $HOME/go/bin \
 	/usr/local/sbin $HOME/.cargo/bin $PATH
+
+set -x LSCOLORS 'exgxfxdxcxegedabagacad'
 
 # Global aliases
 alias python="python3"
