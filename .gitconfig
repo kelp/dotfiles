@@ -10,7 +10,7 @@
 #[url "ssh://git@github.com/"]
 #	insteadOf = https://github.com/
 [core]
-	autocrlf = true
+	autocrlf = input
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
