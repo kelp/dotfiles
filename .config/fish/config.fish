@@ -133,6 +133,8 @@ set -x PATH $HOME/bin $HOME/.node_modules/bin $HOME/go/bin \
 
 set -x LSCOLORS 'exgxfxdxcxegedabagacad'
 
+set -x GPG_TTY (tty)
+
 # Global aliases
 alias python="python3"
 alias pip="pip3"
