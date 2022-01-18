@@ -1,15 +1,22 @@
 # vim: filetype=muttrc
 #
 # Userconfig and other secrets
-source $HOME/.muttrc-secrets
+#source $HOME/.muttrc-secrets
 
 set from = "Travis Cole <tc@tcole.net>"
-set my_server = "imap.fastmail.com"
+#set my_server = "imap.fastmail.com"
+set mbox_type=Maildir
+set folder="~/Maildir"
+set mask="!^\\.[^.]"
+set mbox="~/Maildir"
+set record="+.Sent"
+set postponed="+.Drafts"
+set spoolfile="~/Maildir"
 
-set folder = imaps://$my_server
-set spoolfile = imaps://$my_server
-set record = "=Sent"
-set postponed = "=Drafts"
+#set folder = imaps://$my_server
+#set spoolfile = imaps://$my_server
+#set record = "=Sent"
+#set postponed = "=Drafts"
 set sort=threads
 
 # Headers to show

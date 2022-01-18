@@ -2,6 +2,10 @@
 #
 # handy script to upgrade and update all the things on various systems
 
+reboot_msg() {
+	echo "Reboot now to complete your upgrade"
+}
+
 arch_upgrade() {
 	echo "updating packages"
 	if yay -v &> /dev/null; then
@@ -50,16 +54,15 @@ openbsd_upgrade()
 	echo "updating packages"
 	doas pkg_add -Uu
 
-	if [ $RELEASE ]; then
+	if [ $RELEASE = 0 ]; then
 		echo "Applying latests syspatches or upgrade"
-		doas sysupgrade 2> /dev/null || doas syspatch
+		(doas sysupgrade -nr 2> /dev/null || doas syspatch) && reboot_msg
 	else
 		echo "updating the system to the latest snapshot"
-		doas sysupgrade -n || echo "Upgrade failed" && exit 1
+		(doas sysupgrade -n || echo "Upgrade failed" && exit 1) && reboot_msg
 	fi
 
 	$HOME/.config/motd/motd.fish
-	echo "Reboot now to complete your upgrade"
 }
 
 pi_upgrade() {
