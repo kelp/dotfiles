@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "Test that ssh and gpg forwarding works."
+
+ssh -T git@github.com
+gpg --decrypt --armor encrypted.txt
+
