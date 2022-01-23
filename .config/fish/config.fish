@@ -124,6 +124,11 @@ if status --is-interactive
     set -x npm_config_prefix $HOME/.node_modules
     fish_vi_key_bindings
 
+    # setup gpg agent for ssh
+    set -x GPG_TTY (tty)
+    set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+    gpgconf --launch gpg-agent
+
 end
 
 # Global configs for interactive and non-interactive shells
