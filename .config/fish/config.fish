@@ -124,6 +124,11 @@ if status --is-interactive
     set -x npm_config_prefix $HOME/.node_modules
     fish_vi_key_bindings
 
+    # setup gpg agent for ssh
+    set -x GPG_TTY (tty)
+    set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+    gpgconf --launch gpg-agent
+
 end
 
 # Global configs for interactive and non-interactive shells
@@ -132,8 +137,6 @@ set -x PATH $HOME/bin $HOME/.node_modules/bin $HOME/go/bin \
 	/usr/local/sbin $HOME/.cargo/bin $PATH
 
 set -x LSCOLORS 'exgxfxdxcxegedabagacad'
-
-set -x GPG_TTY (tty)
 
 # Global aliases
 alias python="python3"
