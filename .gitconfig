@@ -1,12 +1,12 @@
 [user]
 	name = Travis Cole
 	email = 11240+kelp@users.noreply.github.com
-	signingkey = 0x1B53928A1ABCD7F
+	signingkey = 0x059178450EC85A4C
 [color]
 	ui = true
 [commit]
 	verbose = true
-	gpgsign = false
+	gpgsign = true
 [core]
 	autocrlf = input
 [credential "https://github.com"]
