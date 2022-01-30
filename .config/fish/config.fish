@@ -164,7 +164,7 @@ if command -sq openrsync
     alias rsync='openrsync'
 end
 
-# Convenience functions for OpenBSD and FreeBSd
+# Convenience functions for OpenBSD and FreeBSD
 function port ()
     if test (count $argv -gt 1)
         printf "%s\n" (_ "Too many args for port command")
@@ -175,4 +175,15 @@ end
 
 function src ()
     cd /usr/src/*/$argv || return
+end
+
+function fish_title
+    set -q argv[1]; or set argv fish
+    # Looks like ~/d/fish: git log
+    # or /e/apt: fish
+    if set -q SSH_CONNECTION
+        echo $USER@(hostname -s) (fish_prompt_pwd_dir_length=1 prompt_pwd): $argv;
+    else
+        echo (fish_prompt_pwd_dir_length=1 prompt_pwd): $argv;
+    end
 end
