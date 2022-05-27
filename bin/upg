@@ -17,11 +17,11 @@ arch_upgrade() {
 }
 
 darwin_upgrade() {
-	sudo softwareupdate -iaR
 	brew update
 	brew upgrade
 	rustup self update
 	rustup update
+	sudo softwareupdate -iaR
 }
 
 debian_upgrade() {

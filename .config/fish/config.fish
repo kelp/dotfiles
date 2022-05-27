@@ -181,7 +181,7 @@ function fish_title
     set -q argv[1]; or set argv fish
     # Looks like ~/d/fish: git log
     # or /e/apt: fish
-    if set -q SSH_CONNECTION
+    if set -q SSH_TTY
         echo $USER@(hostname -s) (fish_prompt_pwd_dir_length=1 prompt_pwd): $argv;
     else
         echo (fish_prompt_pwd_dir_length=1 prompt_pwd): $argv;
