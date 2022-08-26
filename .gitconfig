@@ -1,7 +1,7 @@
 [user]
 	name = Travis Cole
 	email = 11240+kelp@users.noreply.github.com
-	signingkey = 0x059178450EC85A4C
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQClPyCw+ZGDIeljJLXQGjdp8Zxa2gJw/GIwaueZvC9BWOYoqu+j7bINO4NccGl2XPrNk4J90a71BmVJobLEKe9ZAbQVv3TwDRJTYiZN+zsRf4pE0cr83KvOi4EPvTI9GP88bADxfxbu16iT7j5lmHtAAX70TWelqmGyCuySLcuXNwy3dnmjSx1dokvqixp4FMFyz7d5dEPeAZGEr8yjsj1pJchFQlK5fDnvyIwp1qFOodplKH3C+847HT3yXRVxApubDPbgmugcZotv6nqtFQFEo0wwNQ+4lbmr5HJ6YUB/56oHbrxkMeqG1HLO0w7Z5/dDH8HTlDtiZS8RlIytEIlDDWI6/ois143XgcPJPzMvRdtaYzUYY+4vz8sjwxKBzyQsO6HI1kwN9905Bq98T6CiocoVnRA43Mfh19DVe3jn+/20TehHQQ3m38spO1HgpjX1+5n0z+Gwyw5+Wll4tgHvN8BO13XPWaKobnYXzhY55t4sHiJ+7FHcoLXh5LXxR2C2T7hfr0f6kIl12Q6rCPQW7tpr+2lpVZGebl/1FgrXv6IIOXyEmcZm0bmNG3JvNUuWrNw5eOtARreBQu7ScjVO4FXoKEMunxVrzk62mgMr6LJ62XhN3Dh+eCWOivti/oWhUPPZxGdai4EvQUmG9JtGMb+MUT6YLpMZ+BkTMvA2Yw== cardno:10 473 801
 [color]
 	ui = true
 [commit]
@@ -12,3 +12,5 @@
 [credential "https://github.com"]
 	helper = 
 	helper = !gh auth git-credential
+[gpg]
+	format = ssh
