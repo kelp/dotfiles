@@ -1,7 +1,7 @@
 [user]
 	name = Travis Cole
 	email = 11240+kelp@users.noreply.github.com
-	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCyb9sCFmy2HBayTiwkP1+X8Gz3pElz9m0HTH8rwbTI35ooVb+T6CunKyN+9ml++zeWo3agnq5fXfBMh2iBp3MkHZULn5oYfflCsuErTxdkPZ5XCMzL1IWnZUcJbTOgZE8yfxQpnGO6xInNjMW7O5z2WLQHhJkXnsrLYCWZkQ2kX5sP0cXkijbAeCeEXMPe+xnPSjSJUHbrIwNF8Yrmbl4NkbQeQsEDAkUmC/hxFFCnqpYL+qg6uojtY2om05PFv2CZn/9dCLrNdtxoaJfGvNuUTecYYRPVy8rrXs81hS6Jl6XP0PPyNR2exk8o0+8r7kpRgBsxOYB97tQFwYkCJ3yZHvRAf5RlvcCxVdBRPFK7bZvn+vP1vx0KFi+vDYciC3eu0GpHZEvd4jmB6Ijq/+Fd3VmvBhAef//wiG5ONHbEDra8/V3Gy27h5pIhPPI7C00tloADsGuxlc8AcqZgtP2KOYXwCAHUldylI4b5HcKftFVpQI0G3y2BuRV6PKqJO0= tcole@MBP16inch2021.plek.local\n
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPTJ3yBhjHjj4lJQkIS5ZfvbueHqmAmbhvICT1vK1X7k
 [color]
 	ui = true
 [commit]
@@ -14,3 +14,5 @@
 	helper = !gh auth git-credential
 [gpg]
 	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
