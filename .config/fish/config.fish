@@ -2,7 +2,7 @@
 #
 
 # Config for only interactie shells
-if status is-interactive
+if status --is-interactive
     # Bootstrap fisher https://github.com/jorgebucaran/fisher
     if not functions -q fisher
         set -q XDG_CONFIG_HOME
