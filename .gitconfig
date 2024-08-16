@@ -15,8 +15,8 @@
 [gpg]
 	format = ssh
 [gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-	allowedSignersFile = /Users/tcole/.config/git/allowed_ssh_signers
+#	program = op-ssh-sign
+	#allowedSignersFile = /Users/tcole/.config/git/allowed_ssh_signers
 [push]
 	default = current
 	autoSetupRemote = true
