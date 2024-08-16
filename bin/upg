@@ -19,8 +19,10 @@ arch_upgrade() {
 darwin_upgrade() {
 	brew update
 	brew upgrade
-	rustup self update
-	rustup update
+	if which rustup; then
+		rustup self update
+		rustup update
+	fi
 	sudo softwareupdate -iaR
 }
 

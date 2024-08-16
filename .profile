@@ -5,3 +5,5 @@
 export ENV="$HOME/.kshrc" 
 
 [[ -f $HOME/.cargo/env ]] && . "$HOME/.cargo/env"
+
+. "$HOME/.atuin/bin/env"

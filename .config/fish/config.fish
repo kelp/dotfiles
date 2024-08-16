@@ -2,7 +2,7 @@
 #
 
 # Config for only interactie shells
-if status --is-interactive
+if status is-interactive
     # Bootstrap fisher https://github.com/jorgebucaran/fisher
     if not functions -q fisher
         set -q XDG_CONFIG_HOME
@@ -15,36 +15,6 @@ if status --is-interactive
     if [ -f $HOME/.work/work.fish ]
         source $HOME/.work/work.fish
     end
-
-    # Gnu dircolors doesn't detect alacritty as a color terminal
-    # https://github.com/jwilm/alacritty/issues/2210
-    if [ $TERM = "alacritty" ]
-        set -x COLORTERM truecolor
-    end
-
-    # bobthefish settings https://github.com/oh-my-fish/theme-bobthefish
-    set -g theme_powerline_fonts yes
-    set -g theme_nerd_fonts yes
-    set -g theme_display_user ssh
-    set -g theme_display_hostname ssh
-    set -g theme_show_exit_status yes
-    set -g theme_color_scheme nord
-    set -g fish_prompt_pwd_dir_length 4
-    set -g theme_project_dir_length 1
-    set -g theme_newline_cursor no
-
-    set -g theme_title_display_process yes
-    set -g theme_title_display_path yes
-    set -g theme_title_display_user no
-    set -g theme_title_use_abbreviated_path no
-    set -g theme_display_vi yes
-    set -g theme_date_time_zone America/Los_Angeles
-    # Huge repos make this feature super slow
-    set -g theme_vcs_ignore_paths $HOME/src/openbsd $HOME/src/linux \
-        $HOME/src/freebsd
-
-    set TZONE (date +%Z)
-    set -g theme_date_format "+%H:%M:%S:$TZONE"
 
     # disable the theme greeting
     function fish_greeting
@@ -67,13 +37,16 @@ if status --is-interactive
         set -x SSH_AUTH_SOCK $HOME/.ssh/ssh_auth_sock
     end
 
+    # trying out atuin everywhere
+    atuin init fish | source
+
     # OS specific Configs
     set -x OS (uname -s)
 
     switch $OS
         case Darwin
             motd
-			set -x PATH	/opt/homebrew/bin /opt/homebrew/sbin $PATH
+			set -x PATH	$HOME/.ps-toolbox/bin /opt/homebrew/bin /opt/homebrew/sbin $PATH
 
 			if test -d (brew --prefix)"/share/fish/completions"
 				set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
@@ -117,7 +90,7 @@ if status --is-interactive
 
     set -x EDITOR "nvim"
     set -x VISUAL "$EDITOR"
-    set -x MYVIMRC "$HOME/.config/nvim/init.vim"
+    set -x MYVIMRC "$HOME/.config/nvim/init.lua"
     set -x ELECTRON_TRASH "trash-cli code"
     set -x TZ 'America/Los_Angeles'
 
@@ -179,3 +152,5 @@ function fish_title
         echo (fish_prompt_pwd_dir_length=1 prompt_pwd): $argv;
     end
 end
+
+

@@ -17,13 +17,13 @@ export FZF_DEFAULT_COMMAND='rg --files'
 
 case "$(uname)" in
   Darwin)
-  export GOPATH=$HOME/dev
 
-  export PATH=$HOME/bin:$GOPATH/bin:$HOME/Library/Python/3.7/bin:$PATH
+  export PATH=$HOME/bin:$HOME/go/bin:$HOME/Library/Python/3.7/bin:$PATH
     ;;
   Linux)
     ;;
   *)
 esac
-source "$HOME/.cargo/env"
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+	. "$HOME/.cargo/env"
+fi
