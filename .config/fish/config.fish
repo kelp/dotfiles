@@ -1,7 +1,7 @@
 # kelp's Fish Config
 #
 
-# Config for only interactie shells
+# Config for only interactive shells
 if status --is-interactive
     # Bootstrap fisher https://github.com/jorgebucaran/fisher
     if not functions -q fisher
